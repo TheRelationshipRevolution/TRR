@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weekly Check-In — Anxious Attacher — The Relationship Revolution</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#1E1E20;
+  --card:#272729;
+  --card2:#1E1E20;
+  --rose:#C49080;
+  --rose-light:#D4A898;
+  --rose-dark:#8C5C50;
+  --cream:#F0E8E0;
+  --cream-dim:rgba(240,232,224,0.75);
+  --grey:#8A8078;
+  --border:#3A3A3C;
+  --r-sm:6px;
+  --r-md:10px;
+  --r-lg:16px;
+  --r-xl:22px;
+  --grad:linear-gradient(135deg,#8C5C50 0%,#D4A898 35%,#D4A898 55%,#8C5C50 100%);
+}
+html{scroll-behavior:smooth;}
+body{background:#1E1E20;background-image:radial-gradient(ellipse at 0% 0%,rgba(140,92,80,0.08) 0%,transparent 60%),radial-gradient(ellipse at 100% 100%,rgba(196,144,128,0.05) 0%,transparent 55%);font-family:'DM Sans',sans-serif;color:var(--cream);min-height:100vh;overflow-x:hidden;scrollbar-width:none;-ms-overflow-style:none;}
+body::-webkit-scrollbar{display:none;}
+
+/* MARQUEE */
+.marquee-strip{background:var(--card);border-bottom:1px solid var(--border);height:36px;overflow:hidden;display:flex;align-items:center;position:sticky;top:0;z-index:100;}
+.marquee-track{display:flex;white-space:nowrap;animation:marquee 32s linear infinite;align-items:center;}
+.marquee-item{font-family:'DM Sans',sans-serif;font-size:10px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--grey);padding:0 20px;display:inline-flex;align-items:center;flex-shrink:0;}
+.marquee-sep{width:3px;height:3px;border-radius:50%;background:var(--rose);display:inline-flex;flex-shrink:0;margin:0 20px;align-self:center;}
+@keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+/* LAYOUT */
+.shell{display:grid;grid-template-columns:268px 1fr;min-height:calc(100vh - 36px);}
+
+/* SIDEBAR */
+.sidebar{background:var(--card);border-right:1px solid var(--border);position:sticky;top:36px;height:calc(100vh - 36px);overflow-y:auto;display:flex;flex-direction:column;flex-shrink:0;}
+.sidebar-brand{padding:26px 24px 18px;}
+.brand-label{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--rose);font-weight:500;margin-bottom:8px;}
+.brand-name{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;color:var(--cream);line-height:1.2;margin-bottom:4px;}
+.brand-sub{font-family:'Cormorant Garamond',serif;font-size:13px;font-style:italic;color:var(--grey);}
+
+.orn{display:flex;align-items:center;gap:8px;margin:0 24px;}
+.orn-line{flex:1;height:1px;}
+.orn-line.l{background:linear-gradient(90deg,transparent,var(--rose));}
+.orn-line.r{background:linear-gradient(90deg,var(--rose),transparent);}
+.orn-dia{width:5px;height:5px;background:var(--rose);transform:rotate(45deg);flex-shrink:0;}
+
+.sidebar-meta{padding:18px 24px 14px;}
+.meta-row{display:flex;align-items:center;gap:10px;margin-bottom:11px;}
+.meta-dot{width:6px;height:6px;border-radius:50%;background:var(--rose);flex-shrink:0;}
+.meta-label{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--grey);font-weight:500;min-width:38px;}
+.meta-input{background:transparent;border:none;border-bottom:1px solid var(--border);color:var(--cream);font-family:'DM Sans',sans-serif;font-size:12px;font-weight:300;outline:none;width:100%;padding:2px 0;}
+.meta-input::placeholder{color:rgba(138,128,120,0.65);}
+.meta-input:focus{border-bottom-color:var(--rose);}
+
+/* activation meter in sidebar */
+.sb-meter{padding:4px 24px 16px;}
+.sb-meter-label{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--grey);font-weight:500;margin-bottom:10px;}
+input[type=range].sb-range{-webkit-appearance:none;width:100%;height:3px;background:var(--border);border-radius:2px;outline:none;cursor:pointer;}
+input[type=range].sb-range::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;border-radius:50%;background:var(--grad);cursor:pointer;box-shadow:0 2px 6px rgba(196,144,128,0.35);}
+.sb-meter-val{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:300;color:var(--rose-light);margin-top:7px;}
+.sb-meter-desc{font-size:10px;color:var(--grey);font-style:italic;margin-top:2px;line-height:1.4;}
+
+/* nav */
+.sidebar-nav{padding:6px 14px;flex:1;}
+.nav-section-label{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(138,128,120,0.45);padding:0 10px;margin-bottom:7px;margin-top:14px;}
+.nav-item{display:flex;align-items:center;gap:11px;padding:9px 12px;border-radius:var(--r-md);cursor:pointer;transition:all 0.2s;margin-bottom:2px;border:1px solid transparent;}
+.nav-item:hover{background:rgba(196,144,128,0.06);}
+.nav-item.active{background:rgba(196,144,128,0.1);border-color:rgba(196,144,128,0.2);}
+.nav-num{width:20px;height:20px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:9px;color:var(--grey);font-weight:500;flex-shrink:0;transition:all 0.2s;}
+.nav-item.active .nav-num{background:var(--rose);border-color:var(--rose);color:#1E1E20;}
+.nav-item.done .nav-num{background:rgba(196,144,128,0.15);border-color:var(--rose);color:var(--rose);font-size:11px;}
+.nav-label{font-size:12px;font-weight:400;color:var(--grey);transition:color 0.2s;line-height:1.3;}
+.nav-item.active .nav-label,.nav-item:hover .nav-label{color:var(--cream);}
+
+/* history */
+.sidebar-history{padding:14px 24px 20px;border-top:none;}
+.history-label{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--rose);font-weight:500;margin-bottom:10px;}
+.history-empty{font-family:'Cormorant Garamond',serif;font-size:13px;font-style:italic;color:rgba(138,128,120,0.55);line-height:1.6;}
+.history-entry{padding:9px 11px;border:1px solid var(--border);border-radius:var(--r-md);margin-bottom:7px;cursor:pointer;transition:all 0.2s;}
+.history-entry:hover{border-color:var(--rose);background:rgba(196,144,128,0.05);}
+.history-week{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--rose);font-weight:500;}
+.history-date{font-size:11px;color:var(--grey);margin-top:2px;}
+.history-word{font-family:'Cormorant Garamond',serif;font-size:13px;font-style:italic;color:var(--cream-dim);margin-top:3px;}
+
+/* MAIN */
+.main{display:flex;flex-direction:column;min-width:0;}
+.progress-bar{height:3px;background:var(--border);position:sticky;top:36px;z-index:50;}
+.progress-fill{height:100%;background:var(--grad);transition:width 0.4s ease;}
+
+.page{display:none;flex-direction:column;}
+.page.active{display:flex;}
+
+/* HERO */
+.page-hero{padding:48px 52px 36px;position:relative;overflow:hidden;}
+.page-hero::before{content:'';position:absolute;top:-40px;right:-40px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(196,144,128,0.07) 0%,transparent 70%);pointer-events:none;}
+.hero-tag{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--rose);font-weight:500;margin-bottom:14px;}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:300;color:var(--cream);line-height:1.1;margin-bottom:12px;}
+.hero-title em{font-style:italic;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero-sub{font-family:'Cormorant Garamond',serif;font-size:1rem;font-style:italic;color:var(--grey);line-height:1.75;max-width:480px;}
+.hero-deco{position:absolute;right:48px;top:50%;transform:translateY(-50%);font-family:'Cormorant Garamond',serif;font-size:7rem;font-weight:300;color:rgba(196,144,128,0.06);line-height:1;pointer-events:none;letter-spacing:-0.04em;}
+
+/* CONTENT */
+.content{padding:0 52px 52px;display:flex;flex-direction:column;gap:32px;}
+
+/* SECTION */
+.sec{display:flex;flex-direction:column;gap:12px;}
+.sec-header{display:flex;align-items:center;gap:10px;}
+.sec-letter{width:22px;height:22px;border-radius:50%;background:rgba(196,144,128,0.12);border:1px solid rgba(196,144,128,0.28);display:flex;align-items:center;justify-content:center;font-size:9px;color:var(--rose);font-weight:500;flex-shrink:0;}
+.sec-label{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--rose);font-weight:500;}
+
+/* CARD */
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--r-lg);padding:26px;}
+.card-title{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:400;color:var(--cream);margin-bottom:4px;}
+.card-hint{font-size:12px;color:var(--grey);line-height:1.65;margin-bottom:18px;}
+.card-accent{background:#272729;border:1px solid var(--border);}
+
+/* FIELDS */
+.fg{display:flex;flex-direction:column;gap:6px;margin-bottom:16px;}
+.fg:last-child{margin-bottom:0;}
+.fl{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--grey);font-weight:500;}
+textarea.fi,input.fi{background:#303032;border:1px solid var(--border);border-radius:var(--r-md);color:var(--cream);font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;line-height:1.75;padding:12px 15px;outline:none;transition:border-color 0.2s,box-shadow 0.2s;width:100%;}
+textarea.fi{min-height:78px;resize:vertical;}
+input.fi{font-style:normal;font-size:13px;}
+textarea.fi:focus,input.fi:focus{border-color:var(--rose);box-shadow:0 0 0 3px rgba(196,144,128,0.1);}
+textarea.fi::placeholder,input.fi::placeholder{color:rgba(138,128,120,0.75);font-style:italic;}
+
+/* CHIPS */
+.chip-row{display:flex;flex-wrap:wrap;gap:8px;}
+.chip{padding:7px 15px;border:1px solid var(--border);border-radius:var(--r-xl);cursor:pointer;transition:all 0.2s;font-size:12px;color:var(--grey);background:transparent;display:flex;align-items:center;gap:6px;user-select:none;}
+.chip:hover{border-color:var(--rose);color:var(--cream);}
+.chip.selected{background:rgba(196,144,128,0.12);border-color:var(--rose);color:var(--cream);}
+.chip-icon{font-size:13px;}
+
+/* RANGE SLIDER */
+input[type=range].fi-range{-webkit-appearance:none;width:100%;height:4px;background:var(--border);border-radius:2px;outline:none;cursor:pointer;margin:8px 0;}
+input[type=range].fi-range::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:var(--grad);cursor:pointer;box-shadow:0 2px 8px rgba(196,144,128,0.35);}
+.range-labels{display:flex;justify-content:space-between;margin-top:4px;}
+.range-label-text{font-size:10px;color:var(--grey);letter-spacing:0.5px;}
+.range-val{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:300;color:var(--rose-light);text-align:right;margin-top:4px;}
+
+/* SELF CARE SLIDERS */
+.sc-item{margin-bottom:18px;}
+.sc-item:last-child{margin-bottom:0;}
+.sc-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;}
+.sc-name{font-size:11px;font-weight:500;color:var(--cream-dim);letter-spacing:0.5px;}
+.sc-val{font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--rose-light);font-weight:300;}
+input[type=range].sc-range{-webkit-appearance:none;width:100%;height:3px;border-radius:2px;outline:none;cursor:pointer;}
+input[type=range].sc-range::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;border-radius:50%;cursor:pointer;box-shadow:0 2px 6px rgba(196,144,128,0.3);}
+
+/* PIE CHART */
+.pie-wrap{display:grid;grid-template-columns:200px 1fr;gap:28px;align-items:center;margin-top:20px;}
+.pie-canvas-wrap{position:relative;}
+#selfPieChart{display:block;}
+.pie-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;pointer-events:none;}
+.pie-center-pct{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:var(--cream);line-height:1;}
+.pie-center-label{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--grey);margin-top:3px;}
+.pie-legend{display:flex;flex-direction:column;gap:14px;}
+.pie-legend-item{display:flex;align-items:center;gap:10px;}
+.pie-legend-dot{width:12px;height:12px;border-radius:3px;flex-shrink:0;}
+.pie-legend-name{font-size:12px;color:var(--cream-dim);font-weight:400;}
+.pie-legend-pct{font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--rose-light);margin-left:auto;font-weight:300;}
+.pie-insight{font-family:'Cormorant Garamond',serif;font-size:1rem;font-style:italic;color:var(--grey);line-height:1.7;margin-top:20px;padding-top:20px;border-top:1px solid var(--border);}
+.pie-insight span{color:var(--rose-light);}
+
+/* CODE GRID */
+.code-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.code-step{background:#272729;border:1px solid var(--border);border-radius:var(--r-lg);padding:20px;}
+.code-letter{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:var(--rose);line-height:1;margin-bottom:3px;}
+.code-name{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--grey);font-weight:500;margin-bottom:12px;}
+.code-check{display:flex;align-items:flex-start;gap:10px;cursor:pointer;padding:7px 0;border-bottom:1px solid var(--border);}
+.code-check:last-of-type{border-bottom:none;padding-bottom:0;}
+.code-box{width:17px;height:17px;border-radius:4px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:10px;flex-shrink:0;transition:all 0.2s;color:transparent;margin-top:1px;}
+.code-check.ticked .code-box{background:rgba(196,144,128,0.15);border-color:var(--rose);color:var(--rose);}
+.code-check-label{font-size:12px;color:var(--grey);line-height:1.4;}
+
+/* WINS CARD */
+.tone-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;}
+.tone-chip{padding:7px 16px;border:1px solid var(--border);border-radius:var(--r-xl);cursor:pointer;transition:all 0.2s;font-size:11px;color:var(--grey);background:transparent;letter-spacing:0.04em;}
+.tone-chip:hover{border-color:var(--rose);color:var(--cream);}
+.tone-chip.selected{background:rgba(196,144,128,0.12);border-color:var(--rose);color:var(--cream);}
+
+.wins-card{background:#272729;border:1px solid rgba(196,144,128,0.22);border-radius:var(--r-lg);padding:30px;text-align:center;position:relative;overflow:hidden;}
+.wins-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--grad);}
+.wins-card-style{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--rose);font-weight:500;margin-bottom:18px;}
+.wins-card-week{font-family:'Cormorant Garamond',serif;font-size:3.2rem;font-weight:300;color:var(--cream);line-height:1;}
+.wins-card-sublabel{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--grey);margin-top:4px;margin-bottom:22px;}
+.wins-card-word{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-style:italic;color:var(--rose-light);margin-bottom:10px;}
+.wins-card-line{font-family:'Cormorant Garamond',serif;font-size:0.95rem;font-style:italic;color:var(--cream-dim);line-height:1.65;margin-bottom:18px;}
+.wins-card-hashtag{font-size:9px;letter-spacing:1.5px;color:var(--grey);}
+
+/* ONE WORD DISPLAY */
+.one-word-display{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:300;font-style:italic;color:var(--rose-light);text-align:center;padding:18px;min-height:76px;line-height:1.2;}
+
+/* SAVE ROW */
+.save-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.btn-primary{background:var(--grad);color:#1E1E20;border:none;border-radius:var(--r-md);padding:13px 20px;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;transition:opacity 0.2s;display:flex;align-items:center;justify-content:center;gap:8px;}
+.btn-primary:hover{opacity:0.88;}
+.btn-outline{background:transparent;border:1px solid rgba(196,144,128,0.32);color:var(--rose-light);border-radius:var(--r-md);padding:13px 20px;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:all 0.2s;display:flex;align-items:center;justify-content:center;gap:8px;}
+.btn-outline:hover{background:rgba(196,144,128,0.08);border-color:var(--rose);}
+.btn-ghost{background:transparent;border:1px solid var(--border);color:var(--grey);border-radius:var(--r-md);padding:11px 20px;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:all 0.2s;}
+.btn-ghost:hover{border-color:var(--rose);color:var(--cream);}
+.btn-continue{background:var(--grad);color:#1E1E20;border:none;border-radius:var(--r-md);padding:12px 26px;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;transition:opacity 0.2s;}
+.btn-continue:hover{opacity:0.88;}
+
+.continue-wrap{display:flex;justify-content:flex-end;padding-top:6px;gap:10px;}
+
+/* TOAST */
+.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(10px);background:var(--card);border:1px solid rgba(196,144,128,0.28);border-radius:var(--r-lg);padding:11px 22px;font-size:12px;color:var(--cream);opacity:0;transition:all 0.3s;pointer-events:none;z-index:9999;white-space:nowrap;}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(20,20,22,0.92);z-index:500;display:none;align-items:center;justify-content:center;padding:20px;}
+.modal-overlay.open{display:flex;}
+.modal{background:var(--card);border:1px solid var(--border);border-radius:var(--r-xl);width:100%;max-width:660px;max-height:86vh;overflow-y:auto;}
+.modal-header{padding:26px 30px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:var(--card);z-index:10;}
+.modal-title{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:300;color:var(--cream);}
+.modal-close{background:transparent;border:1px solid var(--border);border-radius:var(--r-sm);color:var(--grey);font-size:15px;width:30px;height:30px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s;}
+.modal-close:hover{border-color:var(--rose);color:var(--cream);}
+.modal-body{padding:26px 30px;}
+.modal-section{margin-bottom:24px;}
+.modal-section-title{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--rose);font-weight:500;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border);}
+.modal-field{margin-bottom:14px;}
+.modal-field-label{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--grey);font-weight:500;margin-bottom:5px;}
+.modal-field-value{font-family:'Cormorant Garamond',serif;font-size:14px;font-style:italic;color:var(--cream-dim);line-height:1.7;background:#272729;border-radius:var(--r-md);padding:10px 14px;border:1px solid var(--border);}
+.modal-field-value.empty{color:rgba(138,128,120,0.4);font-style:italic;}
+
+/* VOICE INPUT */
+.field-wrap{position:relative;width:100%;}
+.field-wrap textarea.fi,.field-wrap input.fi{padding-right:44px;}
+.voice-btn{position:absolute;right:10px;top:10px;width:24px;height:24px;border-radius:50%;background:transparent;border:1px solid rgba(196,144,128,0.45);cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;transition:all 0.2s;flex-shrink:0;z-index:2;opacity:0.6;}
+.voice-btn:hover{background:rgba(196,144,128,0.1);opacity:1;}
+.voice-btn.listening{background:rgba(196,144,128,0.2);border-color:var(--rose-light);animation:pulse 1.2s ease-in-out infinite;}
+.voice-btn svg{width:12px;height:12px;display:block;}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(196,144,128,0.4);}50%{box-shadow:0 0 0 6px rgba(196,144,128,0);}}
+
+
+/* ── MOBILE RESPONSIVE ── */
+@media (max-width: 768px) {
+  .shell{grid-template-columns:1fr;}
+  .sidebar{position:relative;top:0;height:auto;max-height:none;border-right:none;border-bottom:1px solid var(--border);}
+  .sidebar-history{display:none;}
+  .sidebar-nav{padding:6px 14px 0;}
+  .nav-section-label{display:none;}
+  .nav-item{padding:7px 10px;}
+  .nav-label{font-size:11px;}
+  .sidebar-brand{padding:18px 20px 12px;}
+  .brand-name{font-size:18px;}
+  .sidebar-meta{padding:12px 20px 10px;}
+  .sb-meter{padding:0 20px 12px;}
+  .page-hero{padding:28px 20px 24px;}
+  .hero-title{font-size:2rem;}
+  .hero-deco{display:none;}
+  .content{padding:0 20px 40px;gap:24px;}
+  .card{padding:20px;}
+  .code-grid{grid-template-columns:1fr;}
+  .pie-wrap{grid-template-columns:1fr;justify-items:center;}
+  .save-row{grid-template-columns:1fr;}
+  .continue-wrap{flex-wrap:wrap;gap:10px;}
+  .btn-continue,.btn-ghost{width:100%;text-align:center;justify-content:center;}
+  .tone-row{gap:6px;}
+  .tone-chip{font-size:10px;padding:6px 12px;}
+  .chip{font-size:11px;padding:6px 12px;}
+  .wins-card{padding:24px 16px;}
+  .wins-card-week{font-size:2.5rem;}
+  .hero-sub{font-size:0.9rem;}
+  .sc-item{margin-bottom:14px;}
+  .field-wrap textarea.fi{font-size:14px;}
+  .meta-input{font-size:13px;}
+  .orn{margin:0 16px;}
+  .activation-meter{padding:0 20px 14px;}
+  .modal{max-height:92vh;}
+  .modal-header{padding:20px 20px 14px;}
+  .modal-body{padding:20px;}
+}
+@media (max-width: 480px) {
+  .hero-title{font-size:1.7rem;}
+  .brand-name{font-size:16px;}
+  .chip-row{gap:6px;}
+  .code-step{padding:14px;}
+  .code-letter{font-size:1.6rem;}
+}
+
+/* scrollbar */
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:transparent;}
+::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px;}
+::-webkit-scrollbar-thumb:hover{background:var(--rose-dark);}
+.fade-up{animation:fadeUp 0.35s ease both;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+</style>
+</head>
+<body>
+
+<div id="tac-wall" style="min-height:100vh;display:flex;align-items:center;justify-content:center;background:#1E1E20;font-family:'DM Sans',sans-serif;padding:2rem;text-align:center;">
+  <div style="max-width:420px;width:100%;">
+    <p style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#C49080;margin-bottom:1rem;">The Relationship Revolution</p>
+    <h1 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:2rem;font-weight:300;color:#D8CEC6;margin-bottom:1rem;">Members Only</h1>
+    <p style="color:#8A8078;font-size:14px;line-height:1.8;margin-bottom:2rem;">This tool is exclusively for members of The Relationship Revolution community. Enter the email address you use for your membership below.</p>
+    <input type="email" id="tac-code-input" placeholder="Enter your member email" style="width:100%;padding:12px 16px;background:#303032;border:1px solid #3A3A3C;border-radius:8px;color:#D8CEC6;font-family:'DM Sans',sans-serif;font-size:14px;margin-bottom:8px;text-align:center;">
+    <p id="tac-code-error" style="display:none;color:#C49080;font-size:12px;margin-bottom:12px;">That email isn't showing as an active member. Please try again.</p>
+    <button onclick="tacSubmitCode()" id="tac-submit-btn" style="width:100%;padding:12px 16px;background:linear-gradient(135deg,#8C5C50 0%,#D4A898 35%,#D4A898 55%,#8C5C50 100%);color:#1E1E20;border:none;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;margin-bottom:16px;">Enter</button>
+    <a href="https://www.skool.com/the-relationship-revolution" style="display:block;color:#8A8078;font-size:13px;text-decoration:underline;">Join The Relationship Revolution</a>
+  </div>
+</div>
+<script>
+var TAC_WORKER_BASE = 'https://wispy-dust-5244.djmisschief.workers.dev';
+
+function tacShowContent(){
+  var wall = document.getElementById('tac-wall');
+  var content = document.getElementById('tac-content');
+  if(wall){ wall.style.display = 'none'; }
+  if(content){ content.style.display = 'block'; }
+}
+
+function tacVerifyEmail(email, onResult){
+  fetch(TAC_WORKER_BASE + '/check-access', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email: email })
+  })
+  .then(function(res){ return res.json(); })
+  .then(function(data){ onResult(!!data.active); })
+  .catch(function(){ onResult(false); });
+}
+
+function tacCheckAccess(){
+  var stored = null;
+  try{ stored = localStorage.getItem('tac-email'); }catch(e){}
+  if(!stored){ return; }
+  tacVerifyEmail(stored, function(active){
+    if(active){ tacShowContent(); }
+  });
+}
+
+function tacSubmitCode(){
+  var input = document.getElementById('tac-code-input');
+  var errorEl = document.getElementById('tac-code-error');
+  var btn = document.getElementById('tac-submit-btn');
+  var val = input ? input.value.trim().toLowerCase() : '';
+  if(!val || val.indexOf('@') === -1){
+    if(errorEl){ errorEl.textContent = 'Please enter a valid email address.'; errorEl.style.display = 'block'; }
+    return;
+  }
+  if(errorEl){ errorEl.style.display = 'none'; }
+  if(btn){ btn.textContent = 'Checking...'; }
+  tacVerifyEmail(val, function(active){
+    if(btn){ btn.textContent = 'Enter'; }
+    if(active){
+      try{ localStorage.setItem('tac-email', val); }catch(e){}
+      tacShowContent();
+    } else if(errorEl){
+      errorEl.textContent = "That email isn't showing as an active member. Please try again.";
+      errorEl.style.display = 'block';
+    }
+  });
+}
+
+window.addEventListener('load', tacCheckAccess);
+var tacInputEl = document.getElementById('tac-code-input');
+if(tacInputEl){
+  tacInputEl.addEventListener('keydown', function(e){
+    if(e.key === 'Enter'){ tacSubmitCode(); }
+  });
+}
+</script>
+
+<div id="tac-content" style="display:none;">
+
+<div class="marquee-strip">
+  <div class="marquee-track">
+    <div class="marquee-item">Notice the pattern</div><span class="marquee-sep"></span>
+    <div class="marquee-item">You are not the anxiety</div><span class="marquee-sep"></span>
+    <div class="marquee-item">One week at a time</div><span class="marquee-sep"></span>
+    <div class="marquee-item">Catching it is the work</div><span class="marquee-sep"></span>
+    <div class="marquee-item">Earned security is real</div><span class="marquee-sep"></span>
+    <div class="marquee-item">The spiral is not the truth</div><span class="marquee-sep"></span>
+    <div class="marquee-item">You showed up</div><span class="marquee-sep"></span>
+    <div class="marquee-item">Notice the pattern</div><span class="marquee-sep"></span>
+    <div class="marquee-item">You are not the anxiety</div><span class="marquee-sep"></span>
+    <div class="marquee-item">One week at a time</div><span class="marquee-sep"></span>
+    <div class="marquee-item">Catching it is the work</div><span class="marquee-sep"></span>
+    <div class="marquee-item">Earned security is real</div><span class="marquee-sep"></span>
+    <div class="marquee-item">The spiral is not the truth</div><span class="marquee-sep"></span>
+    <div class="marquee-item">You showed up</div><span class="marquee-sep"></span>
+  </div>
+</div>
+
+<div class="shell">
+<aside class="sidebar">
+  <div class="sidebar-brand">
+    <div class="brand-label">The Relationship Revolution</div>
+    <div class="brand-name">Weekly<br>Check-In</div>
+    <div class="brand-sub">Anxious Attacher</div>
+  </div>
+  <div class="orn"><div class="orn-line l"></div><div class="orn-dia"></div><div class="orn-line r"></div></div>
+  <div class="sidebar-meta">
+    <div class="meta-row"><div class="meta-dot"></div><div class="meta-label">Week</div><input class="meta-input" id="metaWeek" type="text" placeholder="e.g. Week 4" oninput="updateMeta()"></div>
+    <div class="meta-row"><div class="meta-dot"></div><div class="meta-label">Date</div><input class="meta-input" id="metaDate" type="text" oninput="updateMeta()"></div>
+    <div class="meta-row"><div class="meta-dot"></div><div class="meta-label">Name</div><input class="meta-input" id="metaName" type="text" placeholder="Your name" oninput="updateMeta()"></div>
+  </div>
+  <div class="orn"><div class="orn-line l"></div><div class="orn-dia"></div><div class="orn-line r"></div></div>
+  <div class="sb-meter">
+    <div class="sb-meter-label" style="margin-top:14px;">Activation this week</div>
+    <input type="range" class="sb-range" id="activationSlider" min="0" max="10" value="5" oninput="updateActivation(this.value)">
+    <div class="range-labels"><span class="range-label-text">Calm</span><span class="range-label-text">Highly activated</span></div>
+    <div class="sb-meter-val" id="activationVal">5 / 10</div>
+    <div class="sb-meter-desc" id="activationDesc">Moderate — the pattern showed up</div>
+  </div>
+  <div class="orn"><div class="orn-line l"></div><div class="orn-dia"></div><div class="orn-line r"></div></div>
+  <div class="sidebar-nav">
+    <div class="nav-section-label">Sections</div>
+    <div class="nav-item active" data-page="triggers" onclick="goTo('triggers')"><div class="nav-num"><span>1</span></div><div class="nav-label">Let's Talk Triggers</div></div>
+    <div class="nav-item" data-page="story" onclick="goTo('story')"><div class="nav-num"><span>2</span></div><div class="nav-label">The Story I Told</div></div>
+    <div class="nav-item" data-page="code" onclick="goTo('code')"><div class="nav-num"><span>3</span></div><div class="nav-label">Where I Showed Up</div></div>
+    <div class="nav-item" data-page="needs" onclick="goTo('needs')"><div class="nav-num"><span>4</span></div><div class="nav-label">What I Need</div></div>
+    <div class="nav-item" data-page="win" onclick="goTo('win')"><div class="nav-num"><span>5</span></div><div class="nav-label">This Week's Win</div></div>
+    <div class="nav-item" data-page="selfcare" onclick="goTo('selfcare')"><div class="nav-num"><span>6</span></div><div class="nav-label">How I Showed Up For Me</div></div>
+  </div>
+  <div class="orn" style="margin-top:8px;margin-bottom:4px;"><div class="orn-line l"></div><div class="orn-dia"></div><div class="orn-line r"></div></div>
+  <div class="sidebar-history">
+    <div class="history-label">Previous Weeks</div>
+    <div id="historyList"><div class="history-empty">Your check-in history will appear here once you save your first week.</div></div>
+  </div>
+</aside>
+
+<main class="main">
+  <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:16%"></div></div>
+
+  <!-- PAGE 1: TRIGGERS -->
+  <div class="page active" id="page-triggers">
+    <div class="page-hero fade-up">
+      <div class="hero-tag">01 — This Week</div>
+      <div class="hero-title">Let's Talk<br><em>Triggers</em></div>
+      <div class="hero-sub">What was your nervous system responding to this week — if anything? There are no right answers here, only honest ones.</div>
+      <div class="hero-deco">CATCH</div>
+    </div>
+    <div class="content">
+      <div class="sec fade-up">
+        <div class="sec-header"><div class="sec-letter">A</div><div class="sec-label">How the week felt</div></div>
+        <div class="card">
+          <div class="card-title">The overall tone of this week</div>
+          <div class="card-hint">Pick what resonates — choose as many as feel true.</div>
+          <div class="chip-row" id="moodRow">
+            <div class="chip" onclick="toggleChip(this,'mood')" data-val="Activated"><span class="chip-icon">⚡</span>Activated</div>
+            <div class="chip" onclick="toggleChip(this,'mood')" data-val="Anxious"><span class="chip-icon">🌀</span>Anxious</div>
+            <div class="chip" onclick="toggleChip(this,'mood')" data-val="Grounded"><span class="chip-icon">🌿</span>Grounded</div>
+            <div class="chip" onclick="toggleChip(this,'mood')" data-val="Hopeful"><span class="chip-icon">✦</span>Hopeful</div>
+            <div class="chip" onclick="toggleChip(this,'mood')" data-val="Exhausted"><span class="chip-icon">🌘</span>Exhausted</div>
+            <div class="chip" onclick="toggleChip(this,'mood')" data-val="Proud"><span class="chip-icon">🌸</span>Proud</div>
+            <div class="chip" onclick="toggleChip(this,'mood')" data-val="Rebuilding"><span class="chip-icon">🔄</span>Rebuilding</div>
+            <div class="chip" onclick="toggleChip(this,'mood')" data-val="Steadier"><span class="chip-icon">🕊</span>Steadier</div>
+          </div>
+        </div>
+      </div>
+      <div class="sec fade-up">
+        <div class="sec-header"><div class="sec-letter">B</div><div class="sec-label">The trigger</div></div>
+        <div class="card">
+          <div class="card-title">What was your nervous system responding to?</div>
+          <div class="card-hint">This might be something that happened, something that didn't happen, or just a feeling that crept in. Or it might have been a quieter week — that's worth noting too.</div>
+          <div class="fg"><div class="fl">Was there a trigger this week?</div>
+            <div class="chip-row" style="margin-bottom:14px;">
+              <div class="chip" onclick="selectSingle(this,'triggered')" data-val="Yes — and it was significant">Yes — significant</div>
+              <div class="chip" onclick="selectSingle(this,'triggered')" data-val="Yes — but it was manageable">Yes — manageable</div>
+              <div class="chip" onclick="selectSingle(this,'triggered')" data-val="A low hum — nothing specific">Low hum</div>
+              <div class="chip" onclick="selectSingle(this,'triggered')" data-val="No — a genuinely calm week">Calm week</div>
+            </div>
+          </div>
+          <div class="fg"><div class="fl">What happened — or didn't happen?</div><div class="field-wrap"><textarea class="fi" id="triggerWhat" placeholder="A message that didn't come. A tone of voice. Silence. Distance. Or nothing at all this week…" oninput="autoMark('triggers')"></textarea><button class="voice-btn" onclick="toggleVoice(this,'triggerWhat')" title="Speak"><svg viewBox="0 0 24 24" fill="none" stroke="#C49080" stroke-width="1.5"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0014 0M12 19v3M9 22h6" stroke-linecap="round"/></svg></button></div></div>
+          <div class="fg"><div class="fl">How did it show up in your body?</div><div class="field-wrap"><textarea class="fi" id="triggerBody" placeholder="The chest tightening, the checking, the hypervigilance — or this week, the absence of that…" oninput="autoMark('triggers')"></textarea><button class="voice-btn" onclick="toggleVoice(this,'triggerBody')" title="Speak"><svg viewBox="0 0 24 24" fill="none" stroke="#C49080" stroke-width="1.5"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0014 0M12 19v3M9 22h6" stroke-linecap="round"/></svg></button></div></div>
+          <div class="fg"><div class="fl">How long did it last?</div><input class="fi" id="triggerDuration" type="text" placeholder="Hours, days, most of the week, barely at all…" oninput="autoMark('triggers')"></div>
+        </div>
+      </div>
+      <div class="sec fade-up">
+        <div class="sec-header"><div class="sec-letter">C</div><div class="sec-label">Recognition</div></div>
+        <div class="card card-accent">
+          <div class="card-title">Did you catch it while it was happening?</div>
+          <div class="card-hint">There's a difference between being swept away and watching yourself be swept away. Noticing it afterwards still counts — and a calm week is its own kind of data.</div>
+          <div class="fg"><div class="fl">When did you recognise what was happening?</div>
+            <div class="chip-row" style="margin-bottom:14px;">
+              <div class="chip" onclick="selectSingle(this,'recognition')" data-val="While it was happening">While it was happening</div>
+              <div class="chip" onclick="selectSingle(this,'recognition')" data-val="Shortly after">Shortly after</div>
+              <div class="chip" onclick="selectSingle(this,'recognition')" data-val="In hindsight">In hindsight</div>
+              <div class="chip" onclick="selectSingle(this,'recognition')" data-val="Nothing to catch this week">Nothing to catch</div>
+            </div>
+          </div>
+          <div class="fg"><div class="fl">What helped you see it clearly?</div><div class="field-wrap"><textarea class="fi" id="recognitionNote" placeholder="A pause, a journal entry, time, someone reflecting it back to you…" oninput="autoMark('triggers')"></textarea><button class="voice-btn" onclick="toggleVoice(this,'recognitionNote')" title="Speak"><svg viewBox="0 0 24 24" fill="none" stroke="#C49080" stroke-width="1.5"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0014 0M12 19v3M9 22h6" stroke-linecap="round"/></svg></button></div></div>
+        </div>
+      </div>
+      <div class="continue-wrap"><button class="btn-continue" onclick="goTo('story')">Continue to The Story I Told →</button></div>
+    </div>
+  </div>
+
+  <!-- PAGE 2: STORY -->
+  <div class="page" id="page-story">
+    <div class="page-hero fade-up">
+      <div class="hero-tag">02 — The Narrative</div>
+      <div class="hero-title">The Story<br><em>I Told Myself</em></div>
+      <div class="hero-sub">The anxious mind is a story-making machine. The question isn't whether the story ran — it's whether any part of you knew it might not be true.</div>
+      <div class="hero-deco">OBSERVE</div>
+    </div>
+    <div class="content">
+      <div class="sec fade-up">
+        <div class="sec-header"><div class="sec-letter">A</div><div class="sec-label">The story</div></div>
+        <div class="card">
+          <div class="card-title">What your mind decided</div>
+          <div class="card-hint">Write the story your anxious system told you — without editing it. What did you decide it meant?</div>
+          <div class="fg"><div class="fl">What story did your mind tell you?</div><div class="field-wrap"><textarea class="fi" id="storyMain" placeholder="They're pulling away. I've done something wrong. I'm too much. They don't really want this…" oninput="autoMark('story')" style="min-height:95px;"></textarea><button class="voice-btn" onclick="toggleVoice(this,'storyMain')" title="Speak"><svg viewBox="0 0 24 24" fill="none" stroke="#C49080" stroke-width="1.5"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0014 0M12 19v3M9 22h6" stroke-linecap="round"/></svg></button></div></div>
+          <div class="fg"><div class="fl">What did the story say about you?</div><div class="field-wrap"><textarea class="fi" id="storySelf" placeholder="That I'm too needy. That I always do this. That I'll never get this right…" oninput="autoMark('story')"></textarea><button class="voice-btn" onclick="toggleVoice(this,'storySelf')" title="Speak"><svg viewBox="0 0 24 24" fill="none" stroke="#C49080" stroke-width="1.5"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0014 0M12 19v3M9 22h6" stroke-linecap="round"/></svg></button></div></div>
+          <div class="fg"><div class="fl">What did the story say about them?</div><div class="field-wrap"><textarea class="fi" id="storyThem" placeholder="That they don't care enough. That they're done. That they're like everyone else…" oninput="autoMark('story')"></textarea><button class="voice-btn" onclick="toggleVoice(this,'storyThem')" title="Speak"><svg viewBox="0 0 24 24" fill="none" stroke="#C49080" stroke-width="1.5"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0014 0M12 19v3M9 22h6" stroke-linecap="round"/></svg></button></div></div>
+        </div>
+      </div>
+      <div class="sec fade-up">
+        <div class="sec-header"><div class="sec-letter">B</div><div class="sec-label">The reality check</div></div>
+        <div class="card card-accent">
+          <div class="card-title">What was actually true?</div>
+          <div class="card-hint">Not bypassing the feeling — just asking what the evidence actually supported.</div>
+          <div class="fg"><div class="fl">What evidence supported the story?</div><div class="field-wrap"><textarea class="fi" id="storyEvidFor" placeholder="What actually happened that felt like proof…"></textarea><button class="voice-btn" onclick="toggleVoice(this,'storyEvidFor')" title="Speak"><svg viewBox="0 0 24 24" fill="none" stroke="#C49080" stroke-width="1.5"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0014 0M12 19v3M9 22h6" stroke-linecap="round"/></svg></button></div></div>
+          <div class="fg"><div class="fl">What evidence contradicted it?</div><div class="field-wrap"><textarea class="fi" id="storyEvidAgainst" placeholder="What didn't fit the story — even if it was hard to hold onto…" oninput="autoMark('story')"></textarea><button class="voice-btn" onclick="toggleVoice(this,'storyEvidAgainst')" title="Speak"><svg viewBox="0 0 24 24" fill="none" stroke="#C49080" stroke-width="1.5"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0014 0M12 19v3M9 22h6" stroke-linecap="round"/></svg></button></div></div>
+          <div class="fg"><div class="fl">What part of this was pattern, not present?</div><div class="field-wrap"><textarea class="fi" id="storyPattern" placeholder="Where did old wiring meet this situation? What were you actually responding to…" oninput="autoMark('story')"></textarea><button class="voice-btn" onclick="toggleVoice(this,'storyPattern')" title="Speak"><svg viewBox="0 0 24 24" fill="none" stroke="#C49080" stroke-width="1.5"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0014 0M12 19v3M9 22h6" stroke-linecap="round"/></svg></button></div></div>
+        </div>
+      </div>
+      <div class="sec fade-up">
+        <div class="sec-header"><div class="sec-letter">C</div><div class="sec-label">Loosening the grip</div></div>
+        <div class="card">
+          <div class="card-title">One thing you're questioning</div>
+          <div class="card-hint">Even the smallest crack in the story is progress.</div>
+          <div class="fg"><div class="fl">A belief about yourself you're starting to loosen</div><div class="field-wrap"><textarea class="fi" id="storyBelief" placeholder="Maybe I'm not too much. Maybe silence doesn't always mean rejection…" oninput="autoMark('story')"></textarea><button class="voice-btn" onclick="toggleVoice(this,'storyBelief')" title="Speak"><svg viewBox="0 0 24 24" fill="none" stroke="#C49080" stroke-width="1.5"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0014 0M12 19v3M9 22h6" stroke-linecap="round"/></svg></button></div></div>
+        </div>
+      </div>
+      <div class="continue-wrap"><button class="btn-ghost" onclick="goTo('triggers')">← Back</button><button class="btn-continue" onclick="goTo('code')">Continue to Where I Showed Up →</button></div>
+    </div>
+  </div>
+
+  <!-- PAGE 3: CODE -->
+  <div class="page" id="page-code">
+    <div class="page-hero fade-up">
+      <div class="hero-tag">03 — The Choice</div>
+      <div class="hero-title">Where I<br><em>Showed Up Differently</em></div>
+      <div class="hero-sub">You don't need to have gotten it perfect. One pause, one question, one breath before the spiral — that counts.</div>
+      <div class="hero-deco">DECIDE</div>
+    </div>
+    <div class="content">
+      <div class="sec fade-up">
+        <div class="sec-header"><div class="sec-letter">A</div><div class="sec-label">The CODE Method this week</div></div>
+        <div class="code-grid">
+          <div class="code-step">
+            <div class="code-letter">C</div>
+            <div class="code-name">Catch the Pattern</div>
+            <div class="code-check" onclick="toggleCode(this)"><div class="code-box">✓</div><div class="code-check-label">I noticed the pattern while it was active</div></div>
+            <div class="code-check" onclick="toggleCode(this)"><div class="code-box">✓</div><div class="code-check-label">I named what was happening</div></div>
+            <div class="code-check" onclick="toggleCode(this)"><div class="code-box">✓</div><div class="code-check-label">I didn't just react</div></div>
+          </div>
+          <div class="code-step">
+            <div class="code-letter">O</div>
+            <div class="code-name">Observe What's Driving It</div>
+            <div class="code-check" onclick="toggleCode(this)"><div class="code-box">✓</div><div class="code-check-label">I got curious instead of critical</div></div>
+            <div class="code-check" onclick="toggleCode(this)"><div class="code-box">✓</div><div class="code-check-label">I connected it to the wound, not the person</div></div>
+            <div class="code-check" onclick="toggleCode(this)"><div class="code-box">✓</div><div class="code-check-label">I asked what I actually needed</div></div>
+          </div>
+          <div class="code-step">
+            <div class="code-letter">D</div>
+            <div class="code-name">Decide a Different Response</div>
+            <div class="code-check" onclick="toggleCode(this)"><div class="code-box">✓</div><div class="code-check-label">I paused before responding</div></div>
+            <div class="code-check" onclick="toggleCode(this)"><div class="code-box">✓</div><div class="code-check-label">I chose not to send the message</div></div>
+            <div class="code-check" onclick="toggleCode(this)"><div class="code-box">✓</div><div class="code-check-label">I communicated a need instead of a fear</div></div>
+          </div>
+          <div class="code-step">
+            <div class="code-letter">E</div>
+            <div class="code-name">Embody the New Pattern</div>
+            <div class="code-check" onclick="toggleCode(this)"><div class="code-box">✓</div><div class="code-check-label">I soothed myself instead of seeking it externally</div></div>
+            <div class="code-check" onclick="toggleCode(this)"><div class="code-box">✓</div><div class="code-check-label">I held the discomfort and came through it</div></div>
+            <div class="code-check" onclick="toggleCode(this)"><div class="code-box">✓</div><div class="code-check-label">I stayed present without losing myself</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="sec fade-up">
+        <div class="sec-header"><div class="sec-letter">B</div><div class="sec-label">The moment</div></div>
+        <div class="card">
+          <div class="card-title">Describe your win — however small</div>
+          <div class="card-hint">One moment where something was different. Even if the pattern still ran, did any part of you respond to it differently than you would have three months ago?</div>
+          <div class="fg"><div class="fl">What happened?</div><div class="field-wrap"><textarea class="fi" id="codeWinWhat" placeholder="I almost sent the fourth message. I didn't. I sat with the discomfort instead…" oninput="autoMark('code')" style="min-height:95px;"></textarea><button class="voice-btn" onclick="toggleVoice(this,'codeWinWhat')" title="Speak"><svg viewBox="0 0 24 24" fill="none" stroke="#C49080" stroke-width="1.5"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0014 0M12 19v3M9 22h6" stroke-linecap="round"/></svg></button></div></div>
+          <div class="fg"><div class="fl">What made it different this time?</div><div class="field-wrap"><textarea class="fi" id="codeWinDiff" placeholder="I recognised where the urge was coming from. I knew it was the pattern talking…" oninput="autoMark('code')"></textarea><button class="voice-btn" onclick="toggleVoice(this,'codeWinDiff')" title="Speak"><svg viewBox="0 0 24 24" fill="none" stroke="#C49080" stroke-width="1.5"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0014 0M12 19v3M9 22h6" stroke-linecap="round"/></svg></button></div></div>
+          <div class="fg"><div class="fl">How did it feel to choose differently?</div><div class="field-wrap"><textarea class="fi" id="codeWinFeel" placeholder="Uncomfortable. Lonely. But also — something quieter than usual…" oninput="autoMark('code')"></textarea><button class="voice-btn" onclick="toggleVoice(this,'codeWinFeel')" title="Speak"><svg viewBox="0 0 24 24" fill="none" stroke="#C49080" stroke-width="1.5"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0014 0M12 19v3M9 22h6" stroke-linecap="round"/></svg></button></div></div>
+        </div>
+      </div>
+      <div class="continue-wrap"><button class="btn-ghost" onclick="goTo('story')">← Back</button><button class="btn-continue" onclick="goTo('needs')">Continue to What I Need →</button></div>
+    </div>
+  </div>
+
+  <!-- PAGE 4: NEEDS -->
+  <div class="page" id="page-needs">
+    <div class="page-hero fade-up">
+      <div class="hero-tag">04 — Going Forward</div>
+      <div class="hero-title">What<br><em>I Need</em></div>
+      <div class="hero-sub">Not goals. Not habits. What do you actually need — and can you let yourself name it without immediately deciding you shouldn't have it?</div>
+      <div class="hero-deco">EMBODY</div>
+    </div>
+    <div class="content">
+      <div class="sec fade-up">
+        <div class="sec-header"><div class="sec-letter">A</div><div class="sec-label">The honest need</div></div>
+        <div class="card">
+          <div class="card-title">What you're actually carrying</div>
+          <div class="card-hint">Underneath the activation, underneath the story — what did you need this week that you may not have been able to ask for?</div>
+          <div class="fg"><div class="fl">What did I need this week that I didn't get?</div><div class="field-wrap"><textarea class="fi" id="needsUnmet" placeholder="Reassurance. Presence. To be chosen without having to ask. To be seen…" oninput="autoMark('needs')" style="min-height:95px;"></textarea><button class="voice-btn" onclick="toggleVoice(this,'needsUnmet')" title="Speak"><svg viewBox="0 0 24 24" fill="none" stroke="#C49080" stroke-width="1.5"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0014 0M12 19v3M9 22h6" stroke-linecap="round"/></svg></button></div></div>
+          <div class="fg"><div class="fl">Did I ask for it? If not — what stopped me?</div><div class="field-wrap"><textarea class="fi" id="needsAsked" placeholder="I didn't ask because I was afraid of what the answer might be. Or I asked sideways, through behaviour instead of words…" oninput="autoMark('needs')"></textarea><button class="voice-btn" onclick="toggleVoice(this,'needsAsked')" title="Speak"><svg viewBox="0 0 24 24" fill="none" stroke="#C49080" stroke-width="1.5"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0014 0M12 19v3M9 22h6" stroke-linecap="round"/></svg></button></div></div>
+        </div>
+      </div>
+      <div class="sec fade-up">
+        <div class="sec-header"><div class="sec-letter">B</div><div class="sec-label">Next week</div></div>
+        <div class="card card-accent">
+          <div class="card-title">One thing you're taking forward</div>
+          <div class="card-hint">Not a resolution — just one small thing you're choosing to carry differently.</div>
+          <div class="fg"><div class="fl">What I'm leaving behind from this week</div><div class="field-wrap"><textarea class="fi" id="needsLeave" placeholder="The story that they don't care. The belief that needing things makes me too much…" oninput="autoMark('needs')"></textarea><button class="voice-btn" onclick="toggleVoice(this,'needsLeave')" title="Speak"><svg viewBox="0 0 24 24" fill="none" stroke="#C49080" stroke-width="1.5"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0014 0M12 19v3M9 22h6" stroke-linecap="round"/></svg></button></div></div>
+          <div class="fg"><div class="fl">What I'm stepping into next week</div><div class="field-wrap"><textarea class="fi" id="needsStep" placeholder="Trusting the evidence a little more. Staying in the discomfort a little longer before reaching…" oninput="autoMark('needs')"></textarea><button class="voice-btn" onclick="toggleVoice(this,'needsStep')" title="Speak"><svg viewBox="0 0 24 24" fill="none" stroke="#C49080" stroke-width="1.5"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0014 0M12 19v3M9 22h6" stroke-linecap="round"/></svg></button></div></div>
+          <div class="fg"><div class="fl">Something I want to say to myself right now</div><div class="field-wrap"><textarea class="fi" id="needsSelf" placeholder="That the fact I noticed is enough. That I'm further along than I think…" oninput="autoMark('needs')"></textarea><button class="voice-btn" onclick="toggleVoice(this,'needsSelf')" title="Speak"><svg viewBox="0 0 24 24" fill="none" stroke="#C49080" stroke-width="1.5"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0014 0M12 19v3M9 22h6" stroke-linecap="round"/></svg></button></div></div>
+        </div>
+      </div>
+      <div class="continue-wrap"><button class="btn-ghost" onclick="goTo('code')">← Back</button><button class="btn-continue" onclick="goTo('win')">Continue to This Week's Win →</button></div>
+    </div>
+  </div>
+
+  <!-- PAGE 5: WIN -->
+  <div class="page" id="page-win">
+    <div class="page-hero fade-up">
+      <div class="hero-tag">05 — Mark the Week</div>
+      <div class="hero-title">This Week's<br><em>Win</em></div>
+      <div class="hero-sub">Name it. Own it. Share it if you want to — or keep it just for you. Either way, it happened.</div>
+      <div class="hero-deco">WIN</div>
+    </div>
+    <div class="content">
+      <div class="sec fade-up">
+        <div class="sec-header"><div class="sec-letter">A</div><div class="sec-label">Your word for this week</div></div>
+        <div class="card">
+          <div class="card-title">Sum the week in one word</div>
+          <div class="card-hint">Not a judgement of how you did — just the word that captures what this week was.</div>
+          <div class="fg"><div class="fl">One word</div><input class="fi" type="text" id="oneWord" placeholder="Messy. Clearer. Brave. Still. Trying. Turning…" oninput="updateWinsCard()" style="font-size:1.1rem;font-style:italic;text-align:center;"></div>
+          <div class="one-word-display" id="oneWordDisplay"><span style="color:rgba(138,128,120,0.3);font-size:1.1rem;">your word will appear here</span></div>
+        </div>
+      </div>
+      <div class="sec fade-up">
+        <div class="sec-header"><div class="sec-letter">B</div><div class="sec-label">Your community wins card</div></div>
+        <div class="card card-accent">
+          <div class="card-title">Your shareable card</div>
+          <div class="card-hint">No details — just the marker. Choose your tone and the card updates. Post it in the community if you want to, or keep it for yourself.</div>
+          <div class="tone-row" id="toneRow">
+            <div class="tone-chip selected" onclick="selectTone(this)" data-tone="quietly-proud">Quietly proud</div>
+            <div class="tone-chip" onclick="selectTone(this)" data-tone="still-processing">Still processing</div>
+            <div class="tone-chip" onclick="selectTone(this)" data-tone="honest-hopeful">Honest + hopeful</div>
+            <div class="tone-chip" onclick="selectTone(this)" data-tone="breakthrough">Breakthrough week</div>
+            <div class="tone-chip" onclick="selectTone(this)" data-tone="showing-up">Just showing up</div>
+          </div>
+          <div class="wins-card" id="winsCardPreview">
+            <div class="wins-card-style">The Relationship Revolution · Anxious Attacher</div>
+            <div class="wins-card-week" id="cardWeek">—</div>
+            <div class="wins-card-sublabel">Weekly Check-In</div>
+            <div class="wins-card-word" id="cardWord">Your word here</div>
+            <div class="wins-card-line" id="cardLine">I noticed the pattern. I stayed with it. That's enough for this week.</div>
+            <div class="wins-card-hashtag">#therelationshiprevolution · #anxiousattacher · #earnedsecurity</div>
+          </div>
+        </div>
+      </div>
+      <div class="continue-wrap"><button class="btn-ghost" onclick="goTo('needs')">← Back</button><button class="btn-continue" onclick="goTo('selfcare')">Continue to How I Showed Up For Me →</button></div>
+    </div>
+  </div>
+
+  <!-- PAGE 6: SELF CARE -->
+  <div class="page" id="page-selfcare">
+    <div class="page-hero fade-up">
+      <div class="hero-tag">06 — The Reveal</div>
+      <div class="hero-title">How I Showed Up<br><em>For Me</em></div>
+      <div class="hero-sub">Your nervous system doesn't run on willpower — it runs on sleep, water, food, movement, and time that belongs to you. An anxious system with an empty tank activates harder and faster. This is where that becomes visible.</div>
+      <div class="hero-deco">SELF</div>
+    </div>
+    <div class="content">
+      <div class="sec fade-up">
+        <div class="sec-header"><div class="sec-letter">A</div><div class="sec-label">Self-care this week</div></div>
+        <div class="card">
+          <div class="card-title">How well did you look after yourself?</div>
+          <div class="card-hint">Rate each area honestly. 0 = completely neglected. 10 = genuinely prioritised. This isn't a guilt exercise — it's data about what your nervous system had to work with this week.</div>
+          <div id="scSliders">
+            <div class="sc-item">
+              <div class="sc-top"><span class="sc-name">🌙 Sleep</span><span class="sc-val" id="scVal-sleep">5</span></div>
+              <input type="range" class="sc-range" id="sc-sleep" min="0" max="10" value="5" style="background:linear-gradient(90deg,#C49080 50%,#3A3A3C 50%)" oninput="updateSC(this,'sleep')">
+            </div>
+            <div class="sc-item">
+              <div class="sc-top"><span class="sc-name">💧 Hydration</span><span class="sc-val" id="scVal-hydration">5</span></div>
+              <input type="range" class="sc-range" id="sc-hydration" min="0" max="10" value="5" style="background:linear-gradient(90deg,#C49080 50%,#3A3A3C 50%)" oninput="updateSC(this,'hydration')">
+            </div>
+            <div class="sc-item">
+              <div class="sc-top"><span class="sc-name">🍽 Nourishment</span><span class="sc-val" id="scVal-nourishment">5</span></div>
+              <input type="range" class="sc-range" id="sc-nourishment" min="0" max="10" value="5" style="background:linear-gradient(90deg,#C49080 50%,#3A3A3C 50%)" oninput="updateSC(this,'nourishment')">
+            </div>
+            <div class="sc-item">
+              <div class="sc-top"><span class="sc-name">🚶 Movement</span><span class="sc-val" id="scVal-movement">5</span></div>
+              <input type="range" class="sc-range" id="sc-movement" min="0" max="10" value="5" style="background:linear-gradient(90deg,#C49080 50%,#3A3A3C 50%)" oninput="updateSC(this,'movement')">
+            </div>
+            <div class="sc-item">
+              <div class="sc-top"><span class="sc-name">🌿 Time in nature</span><span class="sc-val" id="scVal-nature">5</span></div>
+              <input type="range" class="sc-range" id="sc-nature" min="0" max="10" value="5" style="background:linear-gradient(90deg,#C49080 50%,#3A3A3C 50%)" oninput="updateSC(this,'nature')">
+            </div>
+            <div class="sc-item">
+              <div class="sc-top"><span class="sc-name">🤍 Time alone</span><span class="sc-val" id="scVal-alone">5</span></div>
+              <input type="range" class="sc-range" id="sc-alone" min="0" max="10" value="5" style="background:linear-gradient(90deg,#C49080 50%,#3A3A3C 50%)" oninput="updateSC(this,'alone')">
+            </div>
+            <div class="sc-item">
+              <div class="sc-top"><span class="sc-name">✨ Something just for joy</span><span class="sc-val" id="scVal-joy">5</span></div>
+              <input type="range" class="sc-range" id="sc-joy" min="0" max="10" value="5" style="background:linear-gradient(90deg,#C49080 50%,#3A3A3C 50%)" oninput="updateSC(this,'joy')">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sec fade-up">
+        <div class="sec-header"><div class="sec-letter">B</div><div class="sec-label">Where your energy went</div></div>
+        <div class="card card-accent">
+          <div class="card-title">Your focus this week</div>
+          <div class="card-hint">The space not taken up by self-care is energy spent elsewhere — on the relationship, on them, on the worry. See how it breaks down.</div>
+          <div class="pie-wrap">
+            <div class="pie-canvas-wrap">
+              <canvas id="selfPieChart" width="200" height="200"></canvas>
+              <div class="pie-center">
+                <div class="pie-center-pct" id="pieSelfPct">50%</div>
+                <div class="pie-center-label">on self</div>
+              </div>
+            </div>
+            <div class="pie-legend">
+              <div class="pie-legend-item"><div class="pie-legend-dot" style="background:var(--rose-light)"></div><div class="pie-legend-name">Self-care</div><div class="pie-legend-pct" id="legendSelf">50%</div></div>
+              <div class="pie-legend-item"><div class="pie-legend-dot" style="background:#3A3A3C"></div><div class="pie-legend-name">Focus on other</div><div class="pie-legend-pct" id="legendOther">50%</div></div>
+            </div>
+          </div>
+          <div class="pie-insight" id="pieInsight">Move the sliders above to see where your energy was this week.</div>
+        </div>
+      </div>
+
+      <div class="sec fade-up">
+        <div class="sec-header"><div class="sec-letter">C</div><div class="sec-label">Reflection</div></div>
+        <div class="card">
+          <div class="card-title">What does this tell you?</div>
+          <div class="fg"><div class="fl">Looking at that picture — what do you notice about the week?</div><div class="field-wrap"><textarea class="fi" id="scReflect" placeholder="I hadn't realised how little time I spent on myself. Or — the weeks I spiral worst are the weeks this chart looks emptiest…" oninput="autoMark('selfcare')"></textarea><button class="voice-btn" onclick="toggleVoice(this,'scReflect')" title="Speak"><svg viewBox="0 0 24 24" fill="none" stroke="#C49080" stroke-width="1.5"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0014 0M12 19v3M9 22h6" stroke-linecap="round"/></svg></button></div></div>
+          <div class="fg"><div class="fl">One self-care act for next week — specifically for your nervous system</div><div class="field-wrap"><textarea class="fi" id="scIntention" placeholder="Something that helps you regulate. Sleep, movement, nourishment, time alone that isn't just waiting for a message…" oninput="autoMark('selfcare')"></textarea><button class="voice-btn" onclick="toggleVoice(this,'scIntention')" title="Speak"><svg viewBox="0 0 24 24" fill="none" stroke="#C49080" stroke-width="1.5"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0014 0M12 19v3M9 22h6" stroke-linecap="round"/></svg></button></div></div>
+        </div>
+      </div>
+
+      <div class="sec fade-up">
+        <div class="sec-header"><div class="sec-letter">D</div><div class="sec-label">Save your record</div></div>
+        <div class="card">
+          <div class="card-title">Keep this week</div>
+          <div class="card-hint">Save your full responses to your history here, and/or download a complete personal record with everything you wrote — to look back on whenever you need it.</div>
+          <div class="save-row">
+            <button class="btn-primary" onclick="saveWeek()">✦ Save to History</button>
+            <button class="btn-outline" onclick="downloadRecord()">↓ Download My Record</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="continue-wrap" style="justify-content:flex-start;"><button class="btn-ghost" onclick="goTo('win')">← Back</button></div>
+    </div>
+  </div>
+
+</main>
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="historyModal">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title" id="modalTitle">—</div>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+// ── STATE ──
+const pages = ['triggers','story','code','needs','win','selfcare'];
+const progressMap = {triggers:16,story:33,code:50,needs:66,win:83,selfcare:100};
+let selectedMoods = [];
+let selectedTriggered = '';
+let selectedRecognition = '';
+let selectedTone = 'quietly-proud';
+const SC_KEYS = ['sleep','hydration','nourishment','movement','nature','alone','joy'];
+const STORAGE_KEY = 'tac_aa_v2_history';
+
+const activationDescs = {
+  0:'No activation — a genuinely calm week',1:'Barely a ripple — mostly settled',
+  2:'A low hum — there but manageable',3:'Noticeable — the pattern stirred',
+  4:'Present — the anxiety had a voice',5:'Moderate — the pattern showed up',
+  6:'Significant — harder to ignore',7:'Strong — it ran for a while',
+  8:'Very activated — the spiral took hold',9:'Overwhelming — hard to find ground',
+  10:'Full activation — the hardest kind of week'
+};
+
+const toneLines = {
+  'quietly-proud':'I noticed the pattern. I stayed with it. That\'s enough for this week.',
+  'still-processing':'Still figuring this one out. But I\'m here, and I\'m looking at it.',
+  'honest-hopeful':'It was hard. And I can see something shifting — slowly, and for real.',
+  'breakthrough':'Something genuinely moved this week. I\'m not the same as I was.',
+  'showing-up':'No dramatic wins. Just showing up. Again. That\'s the work.'
+};
+
+const pieInsights = [
+  'Almost all of your energy went elsewhere this week. An anxious nervous system with nothing left activates harder. That connection is worth sitting with.',
+  'Very little went to you this week. Notice whether the activation felt more intense as the week went on.',
+  'More energy outward than inward. The anxious system needs resource to stay regulated — and the tank was running low.',
+  'About half and half. Notice which half felt more like a choice and which felt like it was taken.',
+  'More energy stayed with you this week. Notice whether the activation felt different — more manageable, shorter-lived.',
+  'Most of your energy was yours this week. A regulated nervous system catches the spiral earlier. Notice if that happened.',
+  'Almost all of your focus stayed with you. Notice what the activation looked like from a well-resourced place.'
+];
+
+// ── INIT ──
+document.addEventListener('DOMContentLoaded',()=>{
+  document.getElementById('metaDate').value = new Date().toLocaleDateString('en-GB');
+  loadHistory();
+  updateWinsCard();
+  drawPie(50,50);
+  SC_KEYS.forEach(k=>updateSC(document.getElementById('sc-'+k),k));
+});
+
+// ── NAV ──
+function goTo(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('page-'+id).classList.add('active');
+  document.querySelectorAll('.nav-item[data-page]').forEach(n=>{
+    n.classList.remove('active');
+    if(n.dataset.page===id) n.classList.add('active');
+  });
+  document.getElementById('progressFill').style.width = progressMap[id]+'%';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// ── CHIPS ──
+function toggleChip(el,group){
+  el.classList.toggle('selected');
+  if(group==='mood'){
+    const v=el.dataset.val;
+    selectedMoods=el.classList.contains('selected')?[...selectedMoods,v]:selectedMoods.filter(x=>x!==v);
+  }
+}
+function selectSingle(el,group){
+  const row=el.closest('.chip-row');
+  row.querySelectorAll('.chip').forEach(c=>c.classList.remove('selected'));
+  el.classList.add('selected');
+  if(group==='triggered') selectedTriggered=el.dataset.val;
+  if(group==='recognition') selectedRecognition=el.dataset.val;
+  autoMark('triggers');
+}
+
+// ── ACTIVATION ──
+function updateActivation(v){
+  document.getElementById('activationVal').textContent=v+' / 10';
+  document.getElementById('activationDesc').textContent=activationDescs[parseInt(v)];
+}
+
+// ── CODE ──
+function toggleCode(el){el.classList.toggle('ticked');}
+
+// ── TONE + WINS CARD ──
+function selectTone(el){
+  document.querySelectorAll('.tone-chip').forEach(c=>c.classList.remove('selected'));
+  el.classList.add('selected');
+  selectedTone=el.dataset.tone;
+  updateWinsCard();
+}
+function updateWinsCard(){
+  const word=document.getElementById('oneWord').value.trim();
+  const week=document.getElementById('metaWeek').value||'—';
+  document.getElementById('cardWeek').textContent=week;
+  document.getElementById('cardWord').textContent=word||'Your word here';
+  document.getElementById('cardLine').textContent=toneLines[selectedTone];
+  const d=document.getElementById('oneWordDisplay');
+  d.innerHTML=word?`<span style="color:var(--rose-light)">${word}</span>`:`<span style="color:rgba(138,128,120,0.3);font-size:1.1rem;">your word will appear here</span>`;
+}
+function updateMeta(){
+  updateWinsCard();
+  document.getElementById('cardWeek').textContent=document.getElementById('metaWeek').value||'—';
+}
+
+// ── SELF CARE SLIDERS ──
+function updateSC(el,key){
+  const v=parseInt(el.value);
+  document.getElementById('scVal-'+key).textContent=v;
+  const pct=(v/10)*100;
+  el.style.background=`linear-gradient(90deg,var(--rose) ${pct}%,var(--border) ${pct}%)`;
+  el.style.setProperty('--thumb-color','var(--rose)');
+  updatePie();
+}
+
+// ── PIE ──
+function getSCAvg(){
+  const vals=SC_KEYS.map(k=>parseInt(document.getElementById('sc-'+k).value));
+  return Math.round(vals.reduce((a,b)=>a+b,0)/vals.length);
+}
+function updatePie(){
+  const avg=getSCAvg();
+  const selfPct=avg*10;
+  const otherPct=100-selfPct;
+  drawPie(selfPct,otherPct);
+  document.getElementById('pieSelfPct').textContent=selfPct+'%';
+  document.getElementById('legendSelf').textContent=selfPct+'%';
+  document.getElementById('legendOther').textContent=otherPct+'%';
+  const idx=Math.min(6,Math.floor(selfPct/15));
+  document.getElementById('pieInsight').innerHTML=`<span>${pieInsights[idx]}</span>`;
+}
+function drawPie(selfPct,otherPct){
+  const canvas=document.getElementById('selfPieChart');
+  if(!canvas) return;
+  const ctx=canvas.getContext('2d');
+  const cx=100,cy=100,r=80,inner=52;
+  ctx.clearRect(0,0,200,200);
+  const segments=[
+    {pct:selfPct,color:'#D4A898'},
+    {pct:otherPct,color:'#3A3A3C'}
+  ];
+  let start=-Math.PI/2;
+  segments.forEach(s=>{
+    const angle=(s.pct/100)*Math.PI*2;
+    ctx.beginPath();
+    ctx.moveTo(cx,cy);
+    ctx.arc(cx,cy,r,start,start+angle);
+    ctx.closePath();
+    ctx.fillStyle=s.color;
+    ctx.fill();
+    start+=angle;
+  });
+  ctx.beginPath();
+  ctx.arc(cx,cy,inner,0,Math.PI*2);
+  ctx.fillStyle='#1E1E20';
+  ctx.fill();
+}
+
+// ── AUTO MARK ──
+function autoMark(page){
+  document.querySelector(`.nav-item[data-page="${page}"]`)?.classList.add('done');
+}
+
+// ── COLLECT ──
+function collectData(){
+  const codeChecks=[];
+  document.querySelectorAll('.code-check.ticked .code-check-label').forEach(el=>codeChecks.push(el.textContent));
+  const scVals={};
+  SC_KEYS.forEach(k=>scVals[k]=document.getElementById('sc-'+k).value);
+  return {
+    week:document.getElementById('metaWeek').value,
+    date:document.getElementById('metaDate').value,
+    name:document.getElementById('metaName').value,
+    activation:document.getElementById('activationSlider').value,
+    activationDesc:document.getElementById('activationDesc').textContent,
+    moods:selectedMoods,
+    triggered:selectedTriggered,
+    triggerWhat:document.getElementById('triggerWhat').value,
+    triggerBody:document.getElementById('triggerBody').value,
+    triggerDuration:document.getElementById('triggerDuration').value,
+    recognition:selectedRecognition,
+    recognitionNote:document.getElementById('recognitionNote').value,
+    storyMain:document.getElementById('storyMain').value,
+    storySelf:document.getElementById('storySelf').value,
+    storyThem:document.getElementById('storyThem').value,
+    storyEvidFor:document.getElementById('storyEvidFor').value,
+    storyEvidAgainst:document.getElementById('storyEvidAgainst').value,
+    storyPattern:document.getElementById('storyPattern').value,
+    storyBelief:document.getElementById('storyBelief').value,
+    codeChecks,
+    codeWinWhat:document.getElementById('codeWinWhat').value,
+    codeWinDiff:document.getElementById('codeWinDiff').value,
+    codeWinFeel:document.getElementById('codeWinFeel').value,
+    needsUnmet:document.getElementById('needsUnmet').value,
+    needsAsked:document.getElementById('needsAsked').value,
+    needsLeave:document.getElementById('needsLeave').value,
+    needsStep:document.getElementById('needsStep').value,
+    needsSelf:document.getElementById('needsSelf').value,
+    oneWord:document.getElementById('oneWord').value,
+    tone:selectedTone,
+    sc:scVals,
+    scAvg:getSCAvg(),
+    scReflect:document.getElementById('scReflect').value,
+    scIntention:document.getElementById('scIntention').value,
+    savedAt:new Date().toISOString()
+  };
+}
+
+// ── STORAGE ──
+function getHistory(){try{const r=localStorage.getItem(STORAGE_KEY);return r?JSON.parse(r):[]}catch(e){return [];}}
+function saveStorage(entries){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(entries));}catch(e){}}
+
+function saveWeek(){
+  const data=collectData();
+  const entries=getHistory();
+  const idx=entries.findIndex(e=>e.week===data.week&&e.date===data.date);
+  if(idx>=0) entries[idx]=data; else entries.unshift(data);
+  saveStorage(entries);
+  loadHistory();
+  showToast('✦ Week saved to your history');
+}
+
+function loadHistory(){
+  const entries=getHistory();
+  const list=document.getElementById('historyList');
+  if(!entries.length){list.innerHTML='<div class="history-empty">Your check-in history will appear here once you save your first week.</div>';return;}
+  list.innerHTML=entries.map((e,i)=>`
+    <div class="history-entry" onclick="openModal(${i})">
+      <div class="history-week">${e.week||'—'}</div>
+      <div class="history-date">${e.date||''}</div>
+      ${e.oneWord?`<div class="history-word">${e.oneWord}</div>`:''}
+    </div>
+  `).join('');
+}
+
+// ── MODAL ──
+function openModal(idx){
+  const e=getHistory()[idx];
+  if(!e) return;
+  document.getElementById('modalTitle').textContent=(e.week||'—')+(e.date?' · '+e.date:'');
+  const sections=[
+    {title:'01 — Let\'s Talk Triggers',fields:[
+      {label:'How the week felt',value:e.moods?.join(', ')},
+      {label:'Activation level',value:e.activation+'/10 — '+e.activationDesc},
+      {label:'Was there a trigger?',value:e.triggered},
+      {label:'What happened',value:e.triggerWhat},
+      {label:'How it showed up in the body',value:e.triggerBody},
+      {label:'How long it lasted',value:e.triggerDuration},
+      {label:'When I recognised it',value:e.recognition},
+      {label:'What helped me see it',value:e.recognitionNote},
+    ]},
+    {title:'02 — The Story I Told',fields:[
+      {label:'The story my mind told me',value:e.storyMain},
+      {label:'What it said about me',value:e.storySelf},
+      {label:'What it said about them',value:e.storyThem},
+      {label:'Evidence that supported it',value:e.storyEvidFor},
+      {label:'Evidence that contradicted it',value:e.storyEvidAgainst},
+      {label:'What was pattern, not present',value:e.storyPattern},
+      {label:'A belief I\'m loosening',value:e.storyBelief},
+    ]},
+    {title:'03 — Where I Showed Up',fields:[
+      {label:'CODE Method — what I ticked',value:e.codeChecks?.join(' · ')},
+      {label:'The moment I chose differently',value:e.codeWinWhat},
+      {label:'What made it different',value:e.codeWinDiff},
+      {label:'How it felt',value:e.codeWinFeel},
+    ]},
+    {title:'04 — What I Need',fields:[
+      {label:'What I needed and didn\'t get',value:e.needsUnmet},
+      {label:'Whether I asked',value:e.needsAsked},
+      {label:'What I\'m leaving behind',value:e.needsLeave},
+      {label:'What I\'m stepping into',value:e.needsStep},
+      {label:'Something I said to myself',value:e.needsSelf},
+    ]},
+    {title:'05 — This Week\'s Win',fields:[
+      {label:'My word for the week',value:e.oneWord},
+    ]},
+    {title:'06 — How I Showed Up For Me',fields:[
+      {label:'Self-care average',value:e.scAvg!==undefined?e.scAvg+'/10':undefined},
+      {label:'Sleep',value:e.sc?.sleep+'/10'},
+      {label:'Hydration',value:e.sc?.hydration+'/10'},
+      {label:'Nourishment',value:e.sc?.nourishment+'/10'},
+      {label:'Movement',value:e.sc?.movement+'/10'},
+      {label:'Time in nature',value:e.sc?.nature+'/10'},
+      {label:'Time alone',value:e.sc?.alone+'/10'},
+      {label:'Something just for joy',value:e.sc?.joy+'/10'},
+      {label:'What I noticed',value:e.scReflect},
+      {label:'Self-care intention for next week',value:e.scIntention},
+    ]},
+  ];
+  document.getElementById('modalBody').innerHTML=sections.map(s=>`
+    <div class="modal-section">
+      <div class="modal-section-title">${s.title}</div>
+      ${s.fields.map(f=>`
+        <div class="modal-field">
+          <div class="modal-field-label">${f.label}</div>
+          <div class="modal-field-value ${!f.value?'empty':''}">${f.value||'Not recorded'}</div>
+        </div>
+      `).join('')}
+    </div>
+  `).join('');
+  document.getElementById('historyModal').classList.add('open');
+}
+function closeModal(){document.getElementById('historyModal').classList.remove('open');}
+document.getElementById('historyModal').addEventListener('click',function(e){if(e.target===this)closeModal();});
+
+// ── DOWNLOAD ──
+function downloadRecord(){
+  const d=collectData();
+  const now=new Date();
+  const ts=now.toLocaleDateString('en-GB').replace(/\//g,'-')+'_'+now.toTimeString().slice(0,5).replace(':','-');
+  const sc=d.sc||{};
+  const lines=[
+    '═══════════════════════════════════════════════',
+    '  THE RELATIONSHIP REVOLUTION — Weekly Check-In Record',
+    '  Anxious Attacher',
+    '═══════════════════════════════════════════════',
+    '',`Week: ${d.week||'—'}`,`Date: ${d.date||'—'}`,`Name: ${d.name||'—'}`,`Saved: ${new Date().toLocaleString('en-GB')}`,
+    '','───────────────────────────────────────────────',
+    '  01  LET\'S TALK TRIGGERS',
+    '───────────────────────────────────────────────',
+    '',`How the week felt: ${d.moods?.join(', ')||'—'}`,
+    `Activation level: ${d.activation}/10 — ${d.activationDesc}`,
+    `Was there a trigger? ${d.triggered||'—'}`,
+    '','What happened:',d.triggerWhat||'—',
+    '','How it showed up in the body:',d.triggerBody||'—',
+    '',`How long it lasted: ${d.triggerDuration||'—'}`,
+    `When I recognised it: ${d.recognition||'—'}`,
+    '','What helped me see it:',d.recognitionNote||'—',
+    '','───────────────────────────────────────────────',
+    '  02  THE STORY I TOLD MYSELF',
+    '───────────────────────────────────────────────',
+    '','The story my mind told me:',d.storyMain||'—',
+    '','What it said about me:',d.storySelf||'—',
+    '','What it said about them:',d.storyThem||'—',
+    '','Evidence that supported it:',d.storyEvidFor||'—',
+    '','Evidence that contradicted it:',d.storyEvidAgainst||'—',
+    '','What was pattern, not present:',d.storyPattern||'—',
+    '','A belief I\'m loosening:',d.storyBelief||'—',
+    '','───────────────────────────────────────────────',
+    '  03  WHERE I SHOWED UP DIFFERENTLY',
+    '───────────────────────────────────────────────',
+    '','CODE Method — what I ticked:',
+    d.codeChecks?.length?d.codeChecks.map(c=>'  ✓ '+c).join('\n'):'—',
+    '','The moment I chose differently:',d.codeWinWhat||'—',
+    '','What made it different:',d.codeWinDiff||'—',
+    '','How it felt:',d.codeWinFeel||'—',
+    '','───────────────────────────────────────────────',
+    '  04  WHAT I NEED',
+    '───────────────────────────────────────────────',
+    '','What I needed and didn\'t get:',d.needsUnmet||'—',
+    '','Whether I asked — and what stopped me:',d.needsAsked||'—',
+    '','What I\'m leaving behind:',d.needsLeave||'—',
+    '','What I\'m stepping into next week:',d.needsStep||'—',
+    '','Something I said to myself:',d.needsSelf||'—',
+    '','───────────────────────────────────────────────',
+    '  05  THIS WEEK\'S WIN',
+    '───────────────────────────────────────────────',
+    '',`My word for the week: ${d.oneWord||'—'}`,
+    '','───────────────────────────────────────────────',
+    '  06  HOW I SHOWED UP FOR ME',
+    '───────────────────────────────────────────────',
+    '',`Self-care average: ${d.scAvg}/10`,
+    `  🌙 Sleep: ${sc.sleep||'—'}/10`,
+    `  💧 Hydration: ${sc.hydration||'—'}/10`,
+    `  🍽 Nourishment: ${sc.nourishment||'—'}/10`,
+    `  🚶 Movement: ${sc.movement||'—'}/10`,
+    `  🌿 Time in nature: ${sc.nature||'—'}/10`,
+    `  🤍 Time alone: ${sc.alone||'—'}/10`,
+    `  ✨ Something just for joy: ${sc.joy||'—'}/10`,
+    '','What I noticed:',d.scReflect||'—',
+    '','Self-care intention for next week:',d.scIntention||'—',
+    '','═══════════════════════════════════════════════',
+    '  the-relationship-revolution.com',
+    '═══════════════════════════════════════════════',
+  ];
+  const blob=new Blob([lines.join('\n')],{type:'text/plain'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download=`TRR-AA-CheckIn_${ts}.txt`;
+  a.click();
+  showToast('↓ Record downloaded');
+}
+
+// ── VOICE INPUT ──
+let activeRecognition = null;
+let activeBtn = null;
+
+function toggleVoice(btn, targetId) {
+  const target = document.getElementById(targetId);
+  if (!target) return;
+
+  if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
+    showToast('Voice input not supported in this browser');
+    return;
+  }
+
+  // If already listening on this button, stop
+  if (btn.classList.contains('listening')) {
+    if (activeRecognition) activeRecognition.stop();
+    return;
+  }
+
+  // Stop any other active recognition
+  if (activeRecognition) {
+    activeRecognition.stop();
+  }
+  if (activeBtn) {
+    activeBtn.classList.remove('listening');
+    activeBtn.innerHTML = micIcon();
+  }
+
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  const recognition = new SR();
+  recognition.continuous = true;
+  recognition.interimResults = true;
+  recognition.lang = 'en-GB';
+
+  let existingText = target.value;
+  if (existingText && !existingText.endsWith(' ')) existingText += ' ';
+
+  recognition.onstart = () => {
+    btn.classList.add('listening');
+    btn.innerHTML = stopIcon();
+    activeRecognition = recognition;
+    activeBtn = btn;
+  };
+
+  recognition.onresult = (e) => {
+    let interim = '';
+    let final = '';
+    for (let i = e.resultIndex; i < e.results.length; i++) {
+      if (e.results[i].isFinal) final += e.results[i][0].transcript + ' ';
+      else interim += e.results[i][0].transcript;
+    }
+    target.value = existingText + final + interim;
+    if (final) existingText = target.value;
+    target.dispatchEvent(new Event('input'));
+  };
+
+  recognition.onerror = (e) => {
+    if (e.error !== 'aborted') showToast('Voice input error — please try again');
+    stopVoice(btn);
+  };
+
+  recognition.onend = () => stopVoice(btn);
+
+  recognition.start();
+}
+
+function stopVoice(btn) {
+  if (btn) {
+    btn.classList.remove('listening');
+    btn.innerHTML = micIcon();
+  }
+  activeRecognition = null;
+  activeBtn = null;
+}
+
+function micIcon() {
+  return `<svg viewBox="0 0 24 24" fill="none" stroke="#C49080" stroke-width="1.5"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0014 0M12 19v3M9 22h6" stroke-linecap="round"/></svg>`;
+}
+function stopIcon() {
+  return `<svg viewBox="0 0 24 24" fill="none" stroke="#D4A898" stroke-width="1.5"><rect x="6" y="6" width="12" height="12" rx="2" fill="rgba(196,144,128,0.3)"/></svg>`;
+}
+
+// ── TOAST ──
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2800);
+}
+</script>
+
+</div>
+</body>
+</html>
