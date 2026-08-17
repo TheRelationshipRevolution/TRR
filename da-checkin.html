@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weekly Check-In — Dismissive Avoidant — The Relationship Revolution</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#1E1E20;
+  --card:#272729;
+  --card2:#1E1E20;
+  --rose:#C49080;
+  --rose-light:#D4A898;
+  --rose-dark:#8C5C50;
+  --cream:#F0E8E0;
+  --cream-dim:rgba(240,232,224,0.75);
+  --grey:#8A8078;
+  --border:#3A3A3C;
+  --r-sm:6px;
+  --r-md:10px;
+  --r-lg:16px;
+  --r-xl:22px;
+  --grad:linear-gradient(135deg,#8C5C50 0%,#D4A898 35%,#D4A898 55%,#8C5C50 100%);
+}
+html{scroll-behavior:smooth;}
+body{background:#1E1E20;background-image:radial-gradient(ellipse at 0% 0%,rgba(140,92,80,0.08) 0%,transparent 60%),radial-gradient(ellipse at 100% 100%,rgba(196,144,128,0.05) 0%,transparent 55%);font-family:'DM Sans',sans-serif;color:var(--cream);min-height:100vh;overflow-x:hidden;scrollbar-width:none;-ms-overflow-style:none;}
+body::-webkit-scrollbar{display:none;}
+
+/* MARQUEE */
+.marquee-strip{background:var(--card);border-bottom:1px solid var(--border);height:36px;overflow:hidden;display:flex;align-items:center;position:sticky;top:0;z-index:100;}
+.marquee-track{display:flex;white-space:nowrap;animation:marquee 32s linear infinite;align-items:center;}
+.marquee-item{font-family:'DM Sans',sans-serif;font-size:10px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--grey);padding:0 20px;display:inline-flex;align-items:center;flex-shrink:0;}
+.marquee-sep{width:3px;height:3px;border-radius:50%;background:var(--rose);display:inline-flex;flex-shrink:0;margin:0 20px;align-self:center;}
+@keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+/* LAYOUT */
+.shell{display:grid;grid-template-columns:268px 1fr;min-height:calc(100vh - 36px);}
+
+/* SIDEBAR */
+.sidebar{background:var(--card);border-right:1px solid var(--border);position:sticky;top:36px;height:calc(100vh - 36px);overflow-y:auto;display:flex;flex-direction:column;flex-shrink:0;}
+.sidebar-brand{padding:26px 24px 18px;}
+.brand-label{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--rose);font-weight:500;margin-bottom:8px;}
+.brand-name{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;color:var(--cream);line-height:1.2;margin-bottom:4px;}
+.brand-sub{font-family:'Cormorant Garamond',serif;font-size:13px;font-style:italic;color:var(--grey);}
+
+.orn{display:flex;align-items:center;gap:8px;margin:0 24px;}
+.orn-line{flex:1;height:1px;}
+.orn-line.l{background:linear-gradient(90deg,transparent,var(--rose));}
+.orn-line.r{background:linear-gradient(90deg,var(--rose),transparent);}
+.orn-dia{width:5px;height:5px;background:var(--rose);transform:rotate(45deg);flex-shrink:0;}
+
+.sidebar-meta{padding:18px 24px 14px;}
+.meta-row{display:flex;align-items:center;gap:10px;margin-bottom:11px;}
+.meta-dot{width:6px;height:6px;border-radius:50%;background:var(--rose);flex-shrink:0;}
+.meta-label{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--grey);font-weight:500;min-width:38px;}
+.meta-input{background:transparent;border:none;border-bottom:1px solid var(--border);color:var(--cream);font-family:'DM Sans',sans-serif;font-size:12px;font-weight:300;outline:none;width:100%;padding:2px 0;}
+.meta-input::placeholder{color:rgba(138,128,120,0.65);}
+.meta-input:focus{border-bottom-color:var(--rose);}
+
+/* activation meter in sidebar */
+.sb-meter{padding:4px 24px 16px;}
+.sb-meter-label{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--grey);font-weight:500;margin-bottom:10px;}
+input[type=range].sb-range{-webkit-appearance:none;width:100%;height:3px;background:var(--border);border-radius:2px;outline:none;cursor:pointer;}
+input[type=range].sb-range::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;border-radius:50%;background:var(--grad);cursor:pointer;box-shadow:0 2px 6px rgba(196,144,128,0.35);}
+.sb-meter-val{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:300;color:var(--rose-light);margin-top:7px;}
+.sb-meter-desc{font-size:10px;color:var(--grey);font-style:italic;margin-top:2px;line-height:1.4;}
+
+/* nav */
+.sidebar-nav{padding:6px 14px;flex:1;}
+.nav-section-label{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(138,128,120,0.45);padding:0 10px;margin-bottom:7px;margin-top:14px;}
+.nav-item{display:flex;align-items:center;gap:11px;padding:9px 12px;border-radius:var(--r-md);cursor:pointer;transition:all 0.2s;margin-bottom:2px;border:1px solid transparent;}
+.nav-item:hover{background:rgba(196,144,128,0.06);}
+.nav-item.active{background:rgba(196,144,128,0.1);border-color:rgba(196,144,128,0.2);}
+.nav-num{width:20px;height:20px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:9px;color:var(--grey);font-weight:500;flex-shrink:0;transition:all 0.2s;}
+.nav-item.active .nav-num{background:var(--rose);border-color:var(--rose);color:#1E1E20;}
+.nav-item.done .nav-num{background:rgba(196,144,128,0.15);border-color:var(--rose);color:var(--rose);font-size:11px;}
+.nav-label{font-size:12px;font-weight:400;color:var(--grey);transition:color 0.2s;line-height:1.3;}
+.nav-item.active .nav-label,.nav-item:hover .nav-label{color:var(--cream);}
+
+/* history */
+.sidebar-history{padding:14px 24px 20px;border-top:none;}
+.history-label{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--rose);font-weight:500;margin-bottom:10px;}
+.history-empty{font-family:'Cormorant Garamond',serif;font-size:13px;font-style:italic;color:rgba(138,128,120,0.55);line-height:1.6;}
+.history-entry{padding:9px 11px;border:1px solid var(--border);border-radius:var(--r-md);margin-bottom:7px;cursor:pointer;transition:all 0.2s;}
+.history-entry:hover{border-color:var(--rose);background:rgba(196,144,128,0.05);}
+.history-week{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--rose);font-weight:500;}
+.history-date{font-size:11px;color:var(--grey);margin-top:2px;}
+.history-word{font-family:'Cormorant Garamond',serif;font-size:13px;font-style:italic;color:var(--cream-dim);margin-top:3px;}
+
+/* MAIN */
+.main{display:flex;flex-direction:column;min-width:0;}
+.progress-bar{height:3px;background:var(--border);position:sticky;top:36px;z-index:50;}
+.progress-fill{height:100%;background:var(--grad);transition:width 0.4s ease;}
+
+.page{display:none;flex-direction:column;}
+.page.active{display:flex;}
+
+/* HERO */
+.page-hero{padding:48px 52px 36px;position:relative;overflow:hidden;}
+.page-hero::before{content:'';position:absolute;top:-40px;right:-40px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(196,144,128,0.07) 0%,transparent 70%);pointer-events:none;}
+.hero-tag{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--rose);font-weight:500;margin-bottom:14px;}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:300;color:var(--cream);line-height:1.1;margin-bottom:12px;}
+.hero-title em{font-style:italic;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero-sub{font-family:'Cormorant Garamond',serif;font-size:1rem;font-style:italic;color:var(--grey);line-height:1.75;max-width:480px;}
+.hero-deco{position:absolute;right:48px;top:50%;transform:translateY(-50%);font-family:'Cormorant Garamond',serif;font-size:7rem;font-weight:300;color:rgba(196,144,128,0.06);line-height:1;pointer-events:none;letter-spacing:-0.04em;}
+
+/* CONTENT */
+.content{padding:0 52px 52px;display:flex;flex-direction:column;gap:32px;}
+
+/* SECTION */
+.sec{display:flex;flex-direction:column;gap:12px;}
+.sec-header{display:flex;align-items:center;gap:10px;}
+.sec-letter{width:22px;height:22px;border-radius:50%;background:rgba(196,144,128,0.12);border:1px solid rgba(196,144,128,0.28);display:flex;align-items:center;justify-content:center;font-size:9px;color:var(--rose);font-weight:500;flex-shrink:0;}
+.sec-label{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--rose);font-weight:500;}
+
+/* CARD */
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--r-lg);padding:26px;}
+.card-title{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:400;color:var(--cream);margin-bottom:4px;}
+.card-hint{font-size:12px;color:var(--grey);line-height:1.65;margin-bottom:18px;}
+.card-accent{background:#272729;border:1px solid var(--border);}
+
+/* FIELDS */
+.fg{display:flex;flex-direction:column;gap:6px;margin-bottom:16px;}
+.fg:last-child{margin-bottom:0;}
+.fl{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--grey);font-weight:500;}
+textarea.fi,input.fi{background:#303032;border:1px solid var(--border);border-radius:var(--r-md);color:var(--cream);font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;line-height:1.75;padding:12px 15px;outline:none;transition:border-color 0.2s,box-shadow 0.2s;width:100%;}
+textarea.fi{min-height:78px;resize:vertical;}
+input.fi{font-style:normal;font-size:13px;}
+textarea.fi:focus,input.fi:focus{border-color:var(--rose);box-shadow:0 0 0 3px rgba(196,144,128,0.1);}
+textarea.fi::placeholder,input.fi::placeholder{color:rgba(138,128,120,0.75);font-style:italic;}
+
+/* CHIPS */
+.chip-row{display:flex;flex-wrap:wrap;gap:8px;}
+.chip{padding:7px 15px;border:1px solid var(--border);border-radius:var(--r-xl);cursor:pointer;transition:all 0.2s;font-size:12px;color:var(--grey);background:transparent;display:flex;align-items:center;gap:6px;user-select:none;}
+.chip:hover{border-color:var(--rose);color:var(--cream);}
+.chip.selected{background:rgba(196,144,128,0.12);border-color:var(--rose);color:var(--cream);}
+.chip-icon{font-size:13px;}
+
+/* RANGE SLIDER */
+input[type=range].fi-range{-webkit-appearance:none;width:100%;height:4px;background:var(--border);border-radius:2px;outline:none;cursor:pointer;margin:8px 0;}
+input[type=range].fi-range::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:var(--grad);cursor:pointer;box-shadow:0 2px 8px rgba(196,144,128,0.35);}
+.range-labels{display:flex;justify-content:space-between;margin-top:4px;}
+.range-label-text{font-size:10px;color:var(--grey);letter-spacing:0.5px;}
+.range-val{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:300;color:var(--rose-light);text-align:right;margin-top:4px;}
+
+/* SELF CARE SLIDERS */
+.sc-item{margin-bottom:18px;}
+.sc-item:last-child{margin-bottom:0;}
+.sc-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;}
+.sc-name{font-size:11px;font-weight:500;color:var(--cream-dim);letter-spacing:0.5px;}
+.sc-val{font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--rose-light);font-weight:300;}
+input[type=range].sc-range{-webkit-appearance:none;width:100%;height:3px;border-radius:2px;outline:none;cursor:pointer;}
+input[type=range].sc-range::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;border-radius:50%;cursor:pointer;box-shadow:0 2px 6px rgba(196,144,128,0.3);}
+
+/* PIE CHART */
+.pie-wrap{display:grid;grid-template-columns:200px 1fr;gap:28px;align-items:center;margin-top:20px;}
+.pie-canvas-wrap{position:relative;}
+#selfPieChart{display:block;}
+.pie-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;pointer-events:none;}
+.pie-center-pct{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:var(--cream);line-height:1;}
+.pie-center-label{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--grey);margin-top:3px;}
+.pie-legend{display:flex;flex-direction:column;gap:14px;}
+.pie-legend-item{display:flex;align-items:center;gap:10px;}
+.pie-legend-dot{width:12px;height:12px;border-radius:3px;flex-shrink:0;}
+.pie-legend-name{font-size:12px;color:var(--cream-dim);font-weight:400;}
+.pie-legend-pct{font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--rose-light);margin-left:auto;font-weight:300;}
+.pie-insight{font-family:'Cormorant Garamond',serif;font-size:1rem;font-style:italic;color:var(--grey);line-height:1.7;margin-top:20px;padding-top:20px;border-top:1px solid var(--border);}
+.pie-insight span{color:var(--rose-light);}
+
+/* CODE GRID */
+.code-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.code-step{background:#272729;border:1px solid var(--border);border-radius:var(--r-lg);padding:20px;}
+.code-letter{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:var(--rose);line-height:1;margin-bottom:3px;}
+.code-name{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--grey);font-weight:500;margin-bottom:12px;}
+.code-check{display:flex;align-items:flex-start;gap:10px;cursor:pointer;padding:7px 0;border-bottom:1px solid var(--border);}
+.code-check:last-of-type{border-bottom:none;padding-bottom:0;}
+.code-box{width:17px;height:17px;border-radius:4px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:10px;flex-shrink:0;transition:all 0.2s;color:transparent;margin-top:1px;}
+.code-check.ticked .code-box{background:rgba(196,144,128,0.15);border-color:var(--rose);color:var(--rose);}
+.code-check-label{font-size:12px;color:var(--grey);line-height:1.4;}
+
+/* WINS CARD */
+.tone-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;}
+.tone-chip{padding:7px 16px;border:1px solid var(--border);border-radius:var(--r-xl);cursor:pointer;transition:all 0.2s;font-size:11px;color:var(--grey);background:transparent;letter-spacing:0.04em;}
+.tone-chip:hover{border-color:var(--rose);color:var(--cream);}
+.tone-chip.selected{background:rgba(196,144,128,0.12);border-color:var(--rose);color:var(--cream);}
+
+.wins-card{background:#272729;border:1px solid rgba(196,144,128,0.22);border-radius:var(--r-lg);padding:30px;text-align:center;position:relative;overflow:hidden;}
+.wins-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--grad);}
+.wins-card-style{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--rose);font-weight:500;margin-bottom:18px;}
+.wins-card-week{font-family:'Cormorant Garamond',serif;font-size:3.2rem;font-weight:300;color:var(--cream);line-height:1;}
+.wins-card-sublabel{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--grey);margin-top:4px;margin-bottom:22px;}
+.wins-card-word{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-style:italic;color:var(--rose-light);margin-bottom:10px;}
+.wins-card-line{font-family:'Cormorant Garamond',serif;font-size:0.95rem;font-style:italic;color:var(--cream-dim);line-height:1.65;margin-bottom:18px;}
+.wins-card-hashtag{font-size:9px;letter-spacing:1.5px;color:var(--grey);}
+
+/* ONE WORD DISPLAY */
+.one-word-display{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:300;font-style:italic;color:var(--rose-light);text-align:center;padding:18px;min-height:76px;line-height:1.2;}
+
+/* SAVE ROW */
+.save-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.btn-primary{background:var(--grad);color:#1E1E20;border:none;border-radius:var(--r-md);padding:13px 20px;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;transition:opacity 0.2s;display:flex;align-items:center;justify-content:center;gap:8px;}
+.btn-primary:hover{opacity:0.88;}
+.btn-outline{background:transparent;border:1px solid rgba(196,144,128,0.32);color:var(--rose-light);border-radius:var(--r-md);padding:13px 20px;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:all 0.2s;display:flex;align-items:center;justify-content:center;gap:8px;}
+.btn-outline:hover{background:rgba(196,144,128,0.08);border-color:var(--rose);}
+.btn-ghost{background:transparent;border:1px solid var(--border);color:var(--grey);border-radius:var(--r-md);padding:11px 20px;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:all 0.2s;}
+.btn-ghost:hover{border-color:var(--rose);color:var(--cream);}
+.btn-continue{background:var(--grad);color:#1E1E20;border:none;border-radius:var(--r-md);padding:12px 26px;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;transition:opacity 0.2s;}
+.btn-continue:hover{opacity:0.88;}
+
+.continue-wrap{display:flex;justify-content:flex-end;padding-top:6px;gap:10px;}
+
+/* TOAST */
+.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(10px);background:var(--card);border:1px solid rgba(196,144,128,0.28);border-radius:var(--r-lg);padding:11px 22px;font-size:12px;color:var(--cream);opacity:0;transition:all 0.3s;pointer-events:none;z-index:9999;white-space:nowrap;}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(20,20,22,0.92);z-index:500;display:none;align-items:center;justify-content:center;padding:20px;}
+.modal-overlay.open{display:flex;}
+.modal{background:var(--card);border:1px solid var(--border);border-radius:var(--r-xl);width:100%;max-width:660px;max-height:86vh;overflow-y:auto;}
+.modal-header{padding:26px 30px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:var(--card);z-index:10;}
+.modal-title{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:300;color:var(--cream);}
+.modal-close{background:transparent;border:1px solid var(--border);border-radius:var(--r-sm);color:var(--grey);font-size:15px;width:30px;height:30px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s;}
+.modal-close:hover{border-color:var(--rose);color:var(--cream);}
+.modal-body{padding:26px 30px;}
+.modal-section{margin-bottom:24px;}
+.modal-section-title{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--rose);font-weight:500;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border);}
+.modal-field{margin-bottom:14px;}
+.modal-field-label{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--grey);font-weight:500;margin-bottom:5px;}
+.modal-field-value{font-family:'Cormorant Garamond',serif;font-size:14px;font-style:italic;color:var(--cream-dim);line-height:1.7;background:#272729;border-radius:var(--r-md);padding:10px 14px;border:1px solid var(--border);}
+.modal-field-value.empty{color:rgba(138,128,120,0.4);font-style:italic;}
+
+/* VOICE INPUT */
+.field-wrap{position:relative;width:100%;}
+.field-wrap textarea.fi,.field-wrap input.fi{padding-right:44px;}
+.voice-btn{position:absolute;right:10px;top:10px;width:24px;height:24px;border-radius:50%;background:transparent;border:1px solid rgba(196,144,128,0.45);cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;transition:all 0.2s;flex-shrink:0;z-index:2;opacity:0.6;}
+.voice-btn:hover{background:rgba(196,144,128,0.1);opacity:1;}
+.voice-btn.listening{background:rgba(196,144,128,0.2);border-color:var(--rose-light);animation:pulse 1.2s ease-in-out infinite;}
+.voice-btn svg{width:12px;height:12px;display:block;}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(196,144,128,0.4);}50%{box-shadow:0 0 0 6px rgba(196,144,128,0);}}
+
+
+/* ── MOBILE RESPONSIVE ── */
+@media (max-width: 768px) {
+  .shell{grid-template-columns:1fr;}
+  .sidebar{position:relative;top:0;height:auto;max-height:none;border-right:none;border-bottom:1px solid var(--border);}
+  .sidebar-history{display:none;}
+  .sidebar-nav{padding:6px 14px 0;}
+  .nav-section-label{display:none;}
+  .nav-item{padding:7px 10px;}
+  .nav-label{font-size:11px;}
+  .sidebar-brand{padding:18px 20px 12px;}
+  .brand-name{font-size:18px;}
+  .sidebar-meta{padding:12px 20px 10px;}
+  .sb-meter{padding:0 20px 12px;}
+  .page-hero{padding:28px 20px 24px;}
+  .hero-title{font-size:2rem;}
+  .hero-deco{display:none;}
+  .content{padding:0 20px 40px;gap:24px;}
+  .card{padding:20px;}
+  .code-grid{grid-template-columns:1fr;}
+  .pie-wrap{grid-template-columns:1fr;justify-items:center;}
+  .save-row{grid-template-columns:1fr;}
+  .continue-wrap{flex-wrap:wrap;gap:10px;}
+  .btn-continue,.btn-ghost{width:100%;text-align:center;justify-content:center;}
+  .tone-row{gap:6px;}
+  .tone-chip{font-size:10px;padding:6px 12px;}
+  .chip{font-size:11px;padding:6px 12px;}
+  .wins-card{padding:24px 16px;}
+  .wins-card-week{font-size:2.5rem;}
+  .hero-sub{font-size:0.9rem;}
+  .sc-item{margin-bottom:14px;}
+  .field-wrap textarea.fi{font-size:14px;}
+  .meta-input{font-size:13px;}
+  .orn{margin:0 16px;}
+  .activation-meter{padding:0 20px 14px;}
+  .modal{max-height:92vh;}
+  .modal-header{padding:20px 20px 14px;}
+  .modal-body{padding:20px;}
+}
+@media (max-width: 480px) {
+  .hero-title{font-size:1.7rem;}
+  .brand-name{font-size:16px;}
+  .chip-row{gap:6px;}
+  .code-step{padding:14px;}
+  .code-letter{font-size:1.6rem;}
+}
+
+/* scrollbar */
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:transparent;}
+::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px;}
+::-webkit-scrollbar-thumb:hover{background:var(--rose-dark);}
+.fade-up{animation:fadeUp 0.35s ease both;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+</style>
+</head>
+<body>
+
+<div id="tac-wall" style="min-height:100vh;display:flex;align-items:center;justify-content:center;background:#1E1E20;font-family:'DM Sans',sans-serif;padding:2rem;text-align:center;">
+  <div style="max-width:420px;width:100%;">
+    <p style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#C49080;margin-bottom:1rem;">The Relationship Revolution</p>
+    <h1 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:2rem;font-weight:300;color:#D8CEC6;margin-bottom:1rem;">Members Only</h1>
+    <p style="color:#8A8078;font-size:14px;line-height:1.8;margin-bottom:2rem;">This tool is exclusively for members of The Relationship Revolution community. Enter the email address you use for your membership below.</p>
+    <input type="email" id="tac-code-input" placeholder="Enter your member email" style="width:100%;padding:12px 16px;background:#303032;border:1px solid #3A3A3C;border-radius:8px;color:#D8CEC6;font-family:'DM Sans',sans-serif;font-size:14px;margin-bottom:8px;text-align:center;">
+    <p id="tac-code-error" style="display:none;color:#C49080;font-size:12px;margin-bottom:12px;">That email isn't showing as an active member. Please try again.</p>
+    <button onclick="tacSubmitCode()" id="tac-submit-btn" style="width:100%;padding:12px 16px;background:linear-gradient(135deg,#8C5C50 0%,#D4A898 35%,#D4A898 55%,#8C5C50 100%);color:#1E1E20;border:none;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;margin-bottom:16px;">Enter</button>
+    <a href="https://www.skool.com/the-relationship-revolution" style="display:block;color:#8A8078;font-size:13px;text-decoration:underline;">Join The Relationship Revolution</a>
+  </div>
+</div>
+<script>
+var TAC_WORKER_BASE = 'https://wispy-dust-5244.djmisschief.workers.dev';
+
+function tacShowContent(){
+  var wall = document.getElementById('tac-wall');
+  var content = document.getElementById('tac-content');
+  if(wall){ wall.style.display = 'none'; }
+  if(content){ content.style.display = 'block'; }
+}
+
+function tacVerifyEmail(email, onResult){
+  fetch(TAC_WORKER_BASE + '/check-access', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email: email })
+  })
+  .then(function(res){ return res.json(); })
+  .then(function(data){ onResult(!!data.active); })
+  .catch(function(){ onResult(false); });
+}
+
+function tacCheckAccess(){
+  var stored = null;
+  try{ stored = localStorage.getItem('tac-email'); }catch(e){}
+  if(!stored){ return; }
+  tacVerifyEmail(stored, function(active){
+    if(active){ tacShowContent(); }
+  });
+}
+
+function tacSubmitCode(){
+  var input = document.getElementById('tac-code-input');
+  var errorEl = document.getElementById('tac-code-error');
+  var btn = document.getElementById('tac-submit-btn');
+  var val = input ? input.value.trim().toLowerCase() : '';
+  if(!val || val.indexOf('@') === -1){
+    if(errorEl){ errorEl.textContent = 'Please enter a valid email address.'; errorEl.style.display = 'block'; }
+    return;
+  }
+  if(errorEl){ errorEl.style.display = 'none'; }
+  if(btn){ btn.textContent = 'Checking...'; }
+  tacVerifyEmail(val, function(active){
+    if(btn){ btn.textContent = 'Enter'; }
+    if(active){
+      try{ localStorage.setItem('tac-email', val); }catch(e){}
+      tacShowContent();
+    } else if(errorEl){
+      errorEl.textContent = "That email isn't showing as an active member. Please try again.";
+      errorEl.style.display = 'block';
+    }
+  });
+}
+
+window.addEventListener('load', tacCheckAccess);
+var tacInputEl = document.getElementById('tac-code-input');
+if(tacInputEl){
+  tacInputEl.addEventListener('keydown', function(e){
+    if(e.key === 'Enter'){ tacSubmitCode(); }
+  });
+}
+</script>
+
+<div id="tac-content" style="display:none;">
+
+<div class="marquee-strip">
+  <div class="marquee-track">
+    <div class="marquee-item">Distance kept you safe — connection can too</div><span class="marquee-sep"></span>
+    <div class="marquee-item">Needing people is not weakness</div><span class="marquee-sep"></span>
+    <div class="marquee-item">Self-sufficiency served you — and there is more available</div><span class="marquee-sep"></span>
+    <div class="marquee-item">You are allowed to want closeness</div><span class="marquee-sep"></span>
+    <div class="marquee-item">Independence and intimacy are not opposites</div><span class="marquee-sep"></span>
+    <div class="marquee-item">Letting someone in does not mean losing yourself</div><span class="marquee-sep"></span>
+    <div class="marquee-item">One week at a time</div><span class="marquee-sep"></span>
+    <div class="marquee-item">Distance kept you safe — connection can too</div><span class="marquee-sep"></span>
+    <div class="marquee-item">Needing people is not weakness</div><span class="marquee-sep"></span>
+    <div class="marquee-item">Self-sufficiency served you — and there is more available</div><span class="marquee-sep"></span>
+    <div class="marquee-item">You are allowed to want closeness</div><span class="marquee-sep"></span>
+    <div class="marquee-item">Independence and intimacy are not opposites</div><span class="marquee-sep"></span>
+    <div class="marquee-item">Letting someone in does not mean losing yourself</div><span class="marquee-sep"></span>
+    <div class="marquee-item">One week at a time</div><span class="marquee-sep"></span>
+  </div>
+</div>
+
+<div class="shell">
+<aside class="sidebar">
+  <div class="sidebar-brand">
+    <div class="brand-label">The Relationship Revolution</div>
+    <div class="brand-name">Weekly<br>Check-In</div>
+    <div class="brand-sub">Dismissive Avoidant</div>
+  </div>
+  <div class="orn"><div class="orn-line l"></div><div class="orn-dia"></div><div class="orn-line r"></div></div>
+  <div class="sidebar-meta">
+    <div class="meta-row"><div class="meta-dot"></div><div class="meta-label">Week</div><input class="meta-input" id="metaWeek" type="text" placeholder="e.g. Week 4" oninput="updateMeta()"></div>
+    <div class="meta-row"><div class="meta-dot"></div><div class="meta-label">Date</div><input class="meta-input" id="metaDate" type="text" oninput="updateMeta()"></div>
+    <div class="meta-row"><div class="meta-dot"></div><div class="meta-label">Name</div><input class="meta-input" id="metaName" type="text" placeholder="Your name" oninput="updateMeta()"></div>
+  </div>
+  <div class="orn"><div class="orn-line l"></div><div class="orn-dia"></div><div class="orn-line r"></div></div>
+  <div class="sb-meter">
+    <div class="sb-meter-label" style="margin-top:14px;">Activation this week</div>
+    <input type="range" class="sb-range" id="activationSlider" min="0" max="10" value="5" oninput="updateActivation(this.value)">
+    <div class="range-labels"><span class="range-label-text">Settled</span><span class="range-label-text">Fully activated</span></div>
+    <div class="sb-meter-val" id="activationVal">5 / 10</div>
+    <div class="sb-meter-desc" id="activationDesc">Moderate — the pattern showed up</div>
+  </div>
+  <div class="orn"><div class="orn-line l"></div><div class="orn-dia"></div><div class="orn-line r"></div></div>
+  <div class="sidebar-nav">
+    <div class="nav-section-label">Sections</div>
+    <div class="nav-item active" data-page="triggers" onclick="goTo('triggers')"><div class="nav-num"><span>1</span></div><div class="nav-label">How Was Your Week?</div></div>
+    <div class="nav-item" data-page="story" onclick="goTo('story')"><div class="nav-num"><span>2</span></div><div class="nav-label">Where You Created Distance</div></div>
+    <div class="nav-item" data-page="code" onclick="goTo('code')"><div class="nav-num"><span>3</span></div><div class="nav-label">A Moment of Connection</div></div>
+    <div class="nav-item" data-page="needs" onclick="goTo('needs')"><div class="nav-num"><span>4</span></div><div class="nav-label">What You Actually Feel</div></div>
+    <div class="nav-item" data-page="win" onclick="goTo('win')"><div class="nav-num"><span>5</span></div><div class="nav-label">This Week's Win</div></div>
+    <div class="nav-item" data-page="selfcare" onclick="goTo('selfcare')"><div class="nav-num"><span>6</span></div><div class="nav-label">How I Showed Up For Me</div></div>
+  </div>
+  <div class="orn" style="margin-top:8px;margin-bottom:4px;"><div class="orn-line l"></div><div class="orn-dia"></div><div class="orn-line r"></div></div>
+  <div class="sidebar-history">
+    <div class="history-label">Previous Weeks</div>
+    <div id="historyList"><div class="history-empty">Your check-in history will appear here once you save your first week.</div></div>
+  </div>
+</aside>
+
+<main class="main">
+  <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:16%"></div></div>
+
+  <!-- PAGE 1: TRIGGERS -->
+  <div class="page active" id="page-triggers">
+    <div class="page-hero fade-up">
+      <div class="hero-tag">01 — This Week</div>
+      <div class="hero-title">How Was<br><em>Your Week?</em></div>
+      <div class="hero-sub">No drama required. Just an honest look at how the week actually felt — including the parts that are harder to name.</div>
+      <div class="hero-deco">HONEST</div>
+    </div>
+    <div class="content">
+      <div class="sec fade-up">
+        <div class="sec-header"><div class="sec-letter">A</div><div class="sec-label">The temperature check</div></div>
+        <div class="card">
+          <div class="card-title">The overall tone of this week</div>
+          <div class="card-hint">Pick what resonates — no right answers here, just honest ones.</div>
+          <div class="chip-row" id="moodRow">
+            <div class="chip" onclick="toggleChip(this,'mood')" data-val="Settled"><span class="chip-icon">🌿</span>Settled</div>
+            <div class="chip" onclick="toggleChip(this,'mood')" data-val="Self-contained"><span class="chip-icon">🌑</span>Self-contained</div>
+            <div class="chip" onclick="toggleChip(this,'mood')" data-val="Distant"><span class="chip-icon">🌫</span>Distant</div>
+            <div class="chip" onclick="toggleChip(this,'mood')" data-val="Uncomfortable"><span class="chip-icon">🌀</span>Uncomfortable</div>
+            <div class="chip" onclick="toggleChip(this,'mood')" data-val="Hopeful"><span class="chip-icon">✦</span>Hopeful</div>
+            <div class="chip" onclick="toggleChip(this,'mood')" data-val="Proud"><span class="chip-icon">🌸</span>Proud</div>
+            <div class="chip" onclick="toggleChip(this,'mood')" data-val="Curious"><span class="chip-icon">🔍</span>Curious</div>
+            <div class="chip" onclick="toggleChip(this,'mood')" data-val="More open than usual"><span class="chip-icon">🕊</span>More open than usual</div>
+          </div>
+        </div>
+      </div>
+      <div class="sec fade-up">
+        <div class="sec-header"><div class="sec-letter">B</div><div class="sec-label">The week itself</div></div>
+        <div class="card">
+          <div class="card-title">What actually happened</div>
+          <div class="card-hint">Keep it simple. What were the main things that took up your time and energy this week — and did any of them involve other people needing things from you?</div>
+          <div class="fg"><div class="fl">How would you honestly describe this week?</div>
+            <div class="chip-row" style="margin-bottom:14px;">
+              <div class="chip" onclick="selectSingle(this,'triggered')" data-val="Mostly alone and that felt fine">Mostly alone — felt fine</div>
+              <div class="chip" onclick="selectSingle(this,'triggered')" data-val="Some connection — manageable">Some connection — manageable</div>
+              <div class="chip" onclick="selectSingle(this,'triggered')" data-val="More people than I wanted">More people than I wanted</div>
+              <div class="chip" onclick="selectSingle(this,'triggered')" data-val="Surprisingly connected">Surprisingly connected</div>
+            </div>
+          </div>
+          <div class="fg"><div class="fl">Was there a moment this week where someone needed something from you emotionally?</div><div class="field-wrap"><textarea class="fi" id="triggerWhat" placeholder="Someone wanted more than I could give. Or someone needed reassurance. Or someone just wanted to be close and I felt the pull to create space…" oninput="autoMark('triggers')"></textarea><button class="voice-btn" onclick="toggleVoice(this,'triggerWhat')" title="Speak"><svg viewBox="0 0 24 24" fill="none" stroke="#C49080" stroke-width="1.5"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0014 0M12 19v3M9 22h6" stroke-linecap="round"/></svg></button></div></div>
+          <div class="fg"><div class="fl">How did that feel — honestly?</div><div class="field-wrap"><textarea class="fi" id="triggerBody" placeholder="Overwhelming. Claustrophobic. Fine actually. Irritating. Or something I noticed but couldn't quite name…" oninput="autoMark('triggers')"></textarea><button class="voice-btn" onclick="toggleVoice(this,'triggerBody')" title="Speak"><svg viewBox="0 0 24 24" fill="none" stroke="#C49080" stroke-width="1.5"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0014 0M12 19v3M9 22h6" stroke-linecap="round"/></svg></button></div></div>
+          <div class="fg"><div class="fl">Was there any moment of genuine ease this week?</div><input class="fi" id="triggerDuration" type="text" placeholder="A conversation that didn't feel like effort. A moment of connection that was okay. Time alone that felt restorative rather than just necessary…" oninput="autoMark('triggers')"></div>
+        </div>
+      </div>
+      <div class="sec fade-up">
+        <div class="sec-header"><div class="sec-letter">C</div><div class="sec-label">The noticing</div></div>
+        <div class="card card-accent">
+          <div class="card-title">Anything you noticed about yourself this week?</div>
+          <div class="card-hint">DAs often process things later and alone. Something might have happened this week that you're only now beginning to understand. That counts.</div>
+          <div class="fg"><div class="fl">When did you notice something worth paying attention to?</div>
+            <div class="chip-row" style="margin-bottom:14px;">
+              <div class="chip" onclick="selectSingle(this,'recognition')" data-val="In the moment">In the moment</div>
+              <div class="chip" onclick="selectSingle(this,'recognition')" data-val="Later on my own">Later on my own</div>
+              <div class="chip" onclick="selectSingle(this,'recognition')" data-val="Just now, doing this">Just now, doing this</div>
+              <div class="chip" onclick="selectSingle(this,'recognition')" data-val="Nothing to notice this week">Nothing to notice</div>
+            </div>
+          </div>
+          <div class="fg"><div class="fl">What was it?</div><div class="field-wrap"><textarea class="fi" id="recognitionNote" placeholder="That I went quiet when I didn't have to. That someone reaching out felt like pressure rather than warmth. That I felt something and then didn't…" oninput="autoMark('triggers')"></textarea><button class="voice-btn" onclick="toggleVoice(this,'recognitionNote')" title="Speak"><svg viewBox="0 0 24 24" fill="none" stroke="#C49080" stroke-width="1.5"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0014 0M12 19v3M9 22h6" stroke-linecap="round"/></svg></button></div></div>
+        </div>
+      </div>
+      <div class="continue-wrap"><button class="btn-continue" onclick="goTo('story')">Continue to Where You Created Distance →</button></div>
+    </div>
+  </div>
+  <!-- PAGE 2: STORY -->
+  <div class="page" id="page-story">
+    <div class="page-hero fade-up">
+      <div class="hero-tag">02 — The Pattern</div>
+      <div class="hero-title">Where You<br><em>Created Distance</em></div>
+      <div class="hero-sub">This isn't a blame exercise — distance made sense once. The question is just: where did it show up this week, and what was underneath it?</div>
+      <div class="hero-deco">SPACE</div>
+    </div>
+    <div class="content">
+      <div class="sec fade-up">
+        <div class="sec-header"><div class="sec-letter">A</div><div class="sec-label">The distance</div></div>
+        <div class="card">
+          <div class="card-title">Where did you pull back this week?</div>
+          <div class="card-hint">Not as a criticism — just as a noticing. The DA system creates distance in many forms. Some obvious, some subtle.</div>
+          <div class="fg"><div class="fl">Did you create distance from someone this week?</div><div class="field-wrap"><textarea class="fi" id="storyMain" placeholder="I went quiet when they needed me to talk. I got busy. I gave a shorter answer than I had. I changed the subject. I was physically present but emotionally elsewhere…" oninput="autoMark('story')" style="min-height:85px;"></textarea><button class="voice-btn" onclick="toggleVoice(this,'storyMain')" title="Speak"><svg viewBox="0 0 24 24" fill="none" stroke="#C49080" stroke-width="1.5"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0014 0M12 19v3M9 22h6" stroke-linecap="round"/></svg></button></div></div>
+          <div class="fg"><div class="fl">What form did the distance take?</div><div class="field-wrap"><textarea class="fi" id="storySelf" placeholder="Physical absence. Going quiet. Focusing on practical things instead of emotional ones. Keeping things light. Being fine when I wasn't…" oninput="autoMark('story')" style="min-height:85px;"></textarea><button class="voice-btn" onclick="toggleVoice(this,'storySelf')" title="Speak"><svg viewBox="0 0 24 24" fill="none" stroke="#C49080" stroke-width="1.5"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0014 0M12 19v3M9 22h6" stroke-linecap="round"/></svg></button></div></div>
+          <div class="fg"><div class="fl">Did the other person notice? How do you know?</div><div class="field-wrap"><textarea class="fi" id="storyThem" placeholder="They went quieter too. Or they asked if I was okay. Or I don't know — I wasn't paying close enough attention to that…" oninput="autoMark('story')" style="min-height:85px;"></textarea><button class="voice-btn" onclick="toggleVoice(this,'storyThem')" title="Speak"><svg viewBox="0 0 24 24" fill="none" stroke="#C49080" stroke-width="1.5"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0014 0M12 19v3M9 22h6" stroke-linecap="round"/></svg></button></div></div>
+        </div>
+      </div>
+      <div class="sec fade-up">
+        <div class="sec-header"><div class="sec-letter">B</div><div class="sec-label">What was underneath it</div></div>
+        <div class="card card-accent">
+          <div class="card-title">What was the distance protecting you from?</div>
+          <div class="card-hint">The DA system creates distance as protection — not as coldness. What was it guarding against this week?</div>
+          <div class="fg"><div class="fl">What would have happened if you hadn't created the distance?</div><div class="field-wrap"><textarea class="fi" id="storyEvidFor" placeholder="I would have had to feel something. Or need something. Or they might have needed more than I knew how to give…"></textarea><button class="voice-btn" onclick="toggleVoice(this,'storyEvidFor')" title="Speak"><svg viewBox="0 0 24 24" fill="none" stroke="#C49080" stroke-width="1.5"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0014 0M12 19v3M9 22h6" stroke-linecap="round"/></svg></button></div></div>
+          <div class="fg"><div class="fl">Was the threat real this week — or was it a familiar feeling from somewhere older?</div><div class="field-wrap"><textarea class="fi" id="storyEvidAgainst" placeholder="This person was actually safe. Nothing bad was going to happen. But the distance happened anyway — before I even decided to create it…" oninput="autoMark('story')"></textarea><button class="voice-btn" onclick="toggleVoice(this,'storyEvidAgainst')" title="Speak"><svg viewBox="0 0 24 24" fill="none" stroke="#C49080" stroke-width="1.5"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0014 0M12 19v3M9 22h6" stroke-linecap="round"/></svg></button></div></div>
+          <div class="fg"><div class="fl">What does the distance cost you — if anything?</div><div class="field-wrap"><textarea class="fi" id="storyPattern" placeholder="Connection I actually wanted. A conversation that could have gone somewhere. Or honestly — nothing. It just felt like the right amount of space…" oninput="autoMark('story')"></textarea><button class="voice-btn" onclick="toggleVoice(this,'storyPattern')" title="Speak"><svg viewBox="0 0 24 24" fill="none" stroke="#C49080" stroke-width="1.5"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0014 0M12 19v3M9 22h6" stroke-linecap="round"/></svg></button></div></div>
+        </div>
+      </div>
+      <div class="sec fade-up">
+        <div class="sec-header"><div class="sec-letter">C</div><div class="sec-label">The honest question</div></div>
+        <div class="card">
+          <div class="card-title">Is the distance still serving you?</div>
+          <div class="card-hint">No right answer. Just an honest one.</div>
+          <div class="fg"><div class="fl">When you look at the distance you created this week — does it feel like protection, or like something you want less of?</div><div class="field-wrap"><textarea class="fi" id="storyBelief" placeholder="It still feels necessary. Or — I'm not sure anymore. Or — I think I wanted to be closer and I didn't know how…" oninput="autoMark('story')"></textarea><button class="voice-btn" onclick="toggleVoice(this,'storyBelief')" title="Speak"><svg viewBox="0 0 24 24" fill="none" stroke="#C49080" stroke-width="1.5"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0014 0M12 19v3M9 22h6" stroke-linecap="round"/></svg></button></div></div>
+        </div>
+      </div>
+      <div class="continue-wrap"><button class="btn-ghost" onclick="goTo('triggers')">← Back</button><button class="btn-continue" onclick="goTo('code')">Continue to A Moment of Connection →</button></div>
+    </div>
+  </div>
+  <!-- PAGE 3: CODE -->
+  <div class="page" id="page-code">
+    <div class="page-hero fade-up">
+      <div class="hero-tag">03 — The Opening</div>
+      <div class="hero-title">A Moment of<br><em>Connection</em></div>
+      <div class="hero-sub">Even in a week of distance, there is usually a moment where something connected. It might have been small. It might have felt uncomfortable. It still counts.</div>
+      <div class="hero-deco">OPEN</div>
+    </div>
+    <div class="content">
+      <div class="sec fade-up">
+        <div class="sec-header"><div class="sec-letter">A</div><div class="sec-label">The CODE Method this week</div></div>
+        <div class="code-grid">
+          <div class="code-step">
+            <div class="code-letter">C</div>
+            <div class="code-name">Catch the Pattern</div>
+            <div class="code-check" onclick="toggleCode(this)"><div class="code-box">✓</div><div class="code-check-label">I noticed when I was creating distance before I was fully gone</div></div>
+            <div class="code-check" onclick="toggleCode(this)"><div class="code-box">✓</div><div class="code-check-label">I recognised the pull toward self-sufficiency in the moment</div></div>
+            <div class="code-check" onclick="toggleCode(this)"><div class="code-box">✓</div><div class="code-check-label">I named what was happening — even just to myself</div></div>
+          </div>
+          <div class="code-step">
+            <div class="code-letter">O</div>
+            <div class="code-name">Observe What's Driving It</div>
+            <div class="code-check" onclick="toggleCode(this)"><div class="code-box">✓</div><div class="code-check-label">I asked what the distance was protecting me from</div></div>
+            <div class="code-check" onclick="toggleCode(this)"><div class="code-box">✓</div><div class="code-check-label">I got curious about what I was actually feeling</div></div>
+            <div class="code-check" onclick="toggleCode(this)"><div class="code-box">✓</div><div class="code-check-label">I noticed whether the discomfort was old or present</div></div>
+          </div>
+          <div class="code-step">
+            <div class="code-letter">D</div>
+            <div class="code-name">Decide a Different Response</div>
+            <div class="code-check" onclick="toggleCode(this)"><div class="code-box">✓</div><div class="code-check-label">I stayed in the conversation instead of exiting</div></div>
+            <div class="code-check" onclick="toggleCode(this)"><div class="code-box">✓</div><div class="code-check-label">I said something true instead of something surface</div></div>
+            <div class="code-check" onclick="toggleCode(this)"><div class="code-box">✓</div><div class="code-check-label">I let someone's need land rather than deflecting it</div></div>
+          </div>
+          <div class="code-step">
+            <div class="code-letter">E</div>
+            <div class="code-name">Embody the New Pattern</div>
+            <div class="code-check" onclick="toggleCode(this)"><div class="code-box">✓</div><div class="code-check-label">I tolerated the discomfort of closeness without leaving</div></div>
+            <div class="code-check" onclick="toggleCode(this)"><div class="code-box">✓</div><div class="code-check-label">I let myself need something — even briefly</div></div>
+            <div class="code-check" onclick="toggleCode(this)"><div class="code-box">✓</div><div class="code-check-label">I let a moment of warmth actually reach me</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="sec fade-up">
+        <div class="sec-header"><div class="sec-letter">B</div><div class="sec-label">The moment</div></div>
+        <div class="card">
+          <div class="card-title">Was there a moment of genuine connection this week?</div>
+          <div class="card-hint">It doesn't have to be big or emotionally intense. A real exchange. A moment you were actually present with someone. A flicker of warmth you let yourself feel.</div>
+          <div class="fg"><div class="fl">What happened?</div><div class="field-wrap"><textarea class="fi" id="codeWinWhat" placeholder="A conversation that felt unexpectedly real. A moment I let someone's words actually land. Something small that mattered more than I expected…" oninput="autoMark('code')" style="min-height:95px;"></textarea><button class="voice-btn" onclick="toggleVoice(this,'codeWinWhat')" title="Speak"><svg viewBox="0 0 24 24" fill="none" stroke="#C49080" stroke-width="1.5"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0014 0M12 19v3M9 22h6" stroke-linecap="round"/></svg></button></div></div>
+          <div class="fg"><div class="fl">How did it feel — before, during, and after?</div><div class="field-wrap"><textarea class="fi" id="codeWinDiff" placeholder="Uncomfortable at first. Then something else — something warmer. Or: fine until I thought about it too much. Or: honestly good, which surprised me…" oninput="autoMark('code')"></textarea><button class="voice-btn" onclick="toggleVoice(this,'codeWinDiff')" title="Speak"><svg viewBox="0 0 24 24" fill="none" stroke="#C49080" stroke-width="1.5"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0014 0M12 19v3M9 22h6" stroke-linecap="round"/></svg></button></div></div>
+          <div class="fg"><div class="fl">What does that tell you?</div><div class="field-wrap"><textarea class="fi" id="codeWinFeel" placeholder="That connection isn't always as threatening as the part of me that avoids it believes. That I might want more of this than I let myself admit…" oninput="autoMark('code')"></textarea><button class="voice-btn" onclick="toggleVoice(this,'codeWinFeel')" title="Speak"><svg viewBox="0 0 24 24" fill="none" stroke="#C49080" stroke-width="1.5"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0014 0M12 19v3M9 22h6" stroke-linecap="round"/></svg></button></div></div>
+        </div>
+      </div>
+      <div class="continue-wrap"><button class="btn-ghost" onclick="goTo('story')">← Back</button><button class="btn-continue" onclick="goTo('needs')">Continue to What You Actually Feel →</button></div>
+    </div>
+  </div>
+  <!-- PAGE 4: NEEDS -->
+  <div class="page" id="page-needs">
+    <div class="page-hero fade-up">
+      <div class="hero-tag">04 — The Feeling</div>
+      <div class="hero-title">What You<br><em>Actually Feel</em></div>
+      <div class="hero-sub">The DA system is very good at not feeling things — or at least at not noticing them. This section isn't about needs. It's about what was actually there underneath the self-sufficiency this week.</div>
+      <div class="hero-deco">FEEL</div>
+    </div>
+    <div class="content">
+      <div class="sec fade-up">
+        <div class="sec-header"><div class="sec-letter">A</div><div class="sec-label">The honest feeling check</div></div>
+        <div class="card">
+          <div class="card-title">What was actually there this week?</div>
+          <div class="card-hint">Not what you told yourself you felt. Not the logical version. What was underneath it — if anything?</div>
+          <div class="fg"><div class="fl">If you're honest — was there anything you wanted this week that you didn't let yourself have?</div><div class="field-wrap"><textarea class="fi" id="needsUnmet" placeholder="More connection than I showed. Someone to notice I was struggling. To be asked how I really was. To feel less alone — even though I was the one creating the distance…" oninput="autoMark('needs')" style="min-height:85px;"></textarea><button class="voice-btn" onclick="toggleVoice(this,'needsUnmet')" title="Speak"><svg viewBox="0 0 24 24" fill="none" stroke="#C49080" stroke-width="1.5"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0014 0M12 19v3M9 22h6" stroke-linecap="round"/></svg></button></div></div>
+          <div class="fg"><div class="fl">What made it hard to acknowledge that — even to yourself?</div><div class="field-wrap"><textarea class="fi" id="needsAsked" placeholder="Needing things feels dangerous. Or weak. Or like it would make me dependent on someone who might not come through…" oninput="autoMark('needs')"></textarea><button class="voice-btn" onclick="toggleVoice(this,'needsAsked')" title="Speak"><svg viewBox="0 0 24 24" fill="none" stroke="#C49080" stroke-width="1.5"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0014 0M12 19v3M9 22h6" stroke-linecap="round"/></svg></button></div></div>
+        </div>
+      </div>
+      <div class="sec fade-up">
+        <div class="sec-header"><div class="sec-letter">B</div><div class="sec-label">Going forward</div></div>
+        <div class="card card-accent">
+          <div class="card-title">One small thing you're taking into next week</div>
+          <div class="card-hint">Not a resolution. Not a commitment to "open up more." Just one small, specific thing.</div>
+          <div class="fg"><div class="fl">What I'm willing to notice next week that I usually look away from</div><div class="field-wrap"><textarea class="fi" id="needsLeave" placeholder="When I feel something and dismiss it. When I create distance automatically. When someone reaches out and I go through the motions instead of actually being there…" oninput="autoMark('needs')"></textarea><button class="voice-btn" onclick="toggleVoice(this,'needsLeave')" title="Speak"><svg viewBox="0 0 24 24" fill="none" stroke="#C49080" stroke-width="1.5"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0014 0M12 19v3M9 22h6" stroke-linecap="round"/></svg></button></div></div>
+          <div class="fg"><div class="fl">One moment of connection I'm willing to let in next week</div><div class="field-wrap"><textarea class="fi" id="needsStep" placeholder="Something small. A conversation I stay in a little longer. A question I answer honestly instead of briefly. A moment of warmth I don't deflect…" oninput="autoMark('needs')"></textarea><button class="voice-btn" onclick="toggleVoice(this,'needsStep')" title="Speak"><svg viewBox="0 0 24 24" fill="none" stroke="#C49080" stroke-width="1.5"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0014 0M12 19v3M9 22h6" stroke-linecap="round"/></svg></button></div></div>
+          <div class="fg"><div class="fl">Something I want to say to myself right now</div><div class="field-wrap"><textarea class="fi" id="needsSelf" placeholder="That self-sufficiency served me once. And that I'm allowed to want more than that now. That needing people doesn't make me weak — it makes me human…" oninput="autoMark('needs')"></textarea><button class="voice-btn" onclick="toggleVoice(this,'needsSelf')" title="Speak"><svg viewBox="0 0 24 24" fill="none" stroke="#C49080" stroke-width="1.5"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0014 0M12 19v3M9 22h6" stroke-linecap="round"/></svg></button></div></div>
+        </div>
+      </div>
+      <div class="continue-wrap"><button class="btn-ghost" onclick="goTo('code')">← Back</button><button class="btn-continue" onclick="goTo('win')">Continue to This Week's Win →</button></div>
+    </div>
+  </div>
+  <!-- PAGE 5: WIN -->
+  <div class="page" id="page-win">
+    <div class="page-hero fade-up">
+      <div class="hero-tag">05 — Mark the Week</div>
+      <div class="hero-title">This Week's<br><em>Win</em></div>
+      <div class="hero-sub">Name it. Own it. Share it if you want to — or keep it just for you. Either way, it happened.</div>
+      <div class="hero-deco">WIN</div>
+    </div>
+    <div class="content">
+      <div class="sec fade-up">
+        <div class="sec-header"><div class="sec-letter">A</div><div class="sec-label">Your word for this week</div></div>
+        <div class="card">
+          <div class="card-title">Sum the week in one word</div>
+          <div class="card-hint">Not a judgement of how you did — just the word that captures what this week was.</div>
+          <div class="fg"><div class="fl">One word</div><input class="fi" type="text" id="oneWord" placeholder="Messy. Clearer. Brave. Still. Trying. Turning…" oninput="updateWinsCard()" style="font-size:1.1rem;font-style:italic;text-align:center;"></div>
+          <div class="one-word-display" id="oneWordDisplay"><span style="color:rgba(138,128,120,0.3);font-size:1.1rem;">your word will appear here</span></div>
+        </div>
+      </div>
+      <div class="sec fade-up">
+        <div class="sec-header"><div class="sec-letter">B</div><div class="sec-label">Your community wins card</div></div>
+        <div class="card card-accent">
+          <div class="card-title">Your shareable card</div>
+          <div class="card-hint">No details — just the marker. Choose your tone and the card updates. Post it in the community if you want to, or keep it for yourself.</div>
+          <div class="tone-row" id="toneRow">
+            <div class="tone-chip selected" onclick="selectTone(this)" data-tone="quietly-proud">Quietly noticing</div>
+            <div class="tone-chip" onclick="selectTone(this)" data-tone="still-processing">Still figuring it out</div>
+            <div class="tone-chip" onclick="selectTone(this)" data-tone="honest-hopeful">Honest + hopeful</div>
+            <div class="tone-chip" onclick="selectTone(this)" data-tone="breakthrough">Something shifted</div>
+            <div class="tone-chip" onclick="selectTone(this)" data-tone="showing-up">I stayed present</div>
+          </div>
+          <div class="wins-card" id="winsCardPreview">
+            <div class="wins-card-style">The Relationship Revolution · Dismissive Avoidant</div>
+            <div class="wins-card-week" id="cardWeek">—</div>
+            <div class="wins-card-sublabel">Weekly Check-In</div>
+            <div class="wins-card-word" id="cardWord">Your word here</div>
+            <div class="wins-card-line" id="cardLine">I noticed the pattern. I stayed with it. That's enough for this week.</div>
+            <div class="wins-card-hashtag">#therelationshiprevolution · #dismissiveavoidant · #earnedsecurity</div>
+          </div>
+        </div>
+      </div>
+      <div class="continue-wrap"><button class="btn-ghost" onclick="goTo('needs')">← Back</button><button class="btn-continue" onclick="goTo('selfcare')">Continue to How I Showed Up For Me →</button></div>
+    </div>
+  </div>
+
+  <!-- PAGE 6: SELF CARE -->
+  <div class="page" id="page-selfcare">
+    <div class="page-hero fade-up">
+      <div class="hero-tag">06 — The Reveal</div>
+      <div class="hero-title">How I Showed Up<br><em>For Me</em></div>
+      <div class="hero-sub">The DA relationship with self-care is complicated — time alone often doubles as both genuine rest and habitual distance. This section asks you to look at which one it was this week.</div>
+      <div class="hero-deco">SELF</div>
+    </div>
+    <div class="content">
+      <div class="sec fade-up">
+        <div class="sec-header"><div class="sec-letter">A</div><div class="sec-label">Self-care this week</div></div>
+        <div class="card">
+          <div class="card-title">How well did you look after yourself?</div>
+          <div class="card-hint">Rate each area honestly. And notice — was the time alone this week genuinely restorative, or was it more of the same distancing pattern wearing a self-care label?</div>
+          <div id="scSliders">
+            <div class="sc-item">
+              <div class="sc-top"><span class="sc-name">🌙 Sleep</span><span class="sc-val" id="scVal-sleep">5</span></div>
+              <input type="range" class="sc-range" id="sc-sleep" min="0" max="10" value="5" style="background:linear-gradient(90deg,#C49080 50%,#3A3A3C 50%)" oninput="updateSC(this,'sleep')">
+            </div>
+            <div class="sc-item">
+              <div class="sc-top"><span class="sc-name">💧 Hydration</span><span class="sc-val" id="scVal-hydration">5</span></div>
+              <input type="range" class="sc-range" id="sc-hydration" min="0" max="10" value="5" style="background:linear-gradient(90deg,#C49080 50%,#3A3A3C 50%)" oninput="updateSC(this,'hydration')">
+            </div>
+            <div class="sc-item">
+              <div class="sc-top"><span class="sc-name">🍽 Nourishment</span><span class="sc-val" id="scVal-nourishment">5</span></div>
+              <input type="range" class="sc-range" id="sc-nourishment" min="0" max="10" value="5" style="background:linear-gradient(90deg,#C49080 50%,#3A3A3C 50%)" oninput="updateSC(this,'nourishment')">
+            </div>
+            <div class="sc-item">
+              <div class="sc-top"><span class="sc-name">🚶 Movement</span><span class="sc-val" id="scVal-movement">5</span></div>
+              <input type="range" class="sc-range" id="sc-movement" min="0" max="10" value="5" style="background:linear-gradient(90deg,#C49080 50%,#3A3A3C 50%)" oninput="updateSC(this,'movement')">
+            </div>
+            <div class="sc-item">
+              <div class="sc-top"><span class="sc-name">🌿 Time in nature</span><span class="sc-val" id="scVal-nature">5</span></div>
+              <input type="range" class="sc-range" id="sc-nature" min="0" max="10" value="5" style="background:linear-gradient(90deg,#C49080 50%,#3A3A3C 50%)" oninput="updateSC(this,'nature')">
+            </div>
+            <div class="sc-item">
+              <div class="sc-top"><span class="sc-name">🤍 Time alone</span><span class="sc-val" id="scVal-alone">5</span></div>
+              <input type="range" class="sc-range" id="sc-alone" min="0" max="10" value="5" style="background:linear-gradient(90deg,#C49080 50%,#3A3A3C 50%)" oninput="updateSC(this,'alone')">
+            </div>
+            <div class="sc-item">
+              <div class="sc-top"><span class="sc-name">✨ Something just for joy</span><span class="sc-val" id="scVal-joy">5</span></div>
+              <input type="range" class="sc-range" id="sc-joy" min="0" max="10" value="5" style="background:linear-gradient(90deg,#C49080 50%,#3A3A3C 50%)" oninput="updateSC(this,'joy')">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sec fade-up">
+        <div class="sec-header"><div class="sec-letter">B</div><div class="sec-label">Where your energy went</div></div>
+        <div class="card card-accent">
+          <div class="card-title">Your focus this week</div>
+          <div class="card-hint">The space not taken up by self-care is energy spent elsewhere — on the relationship, on them, on the worry. See how it breaks down.</div>
+          <div class="pie-wrap">
+            <div class="pie-canvas-wrap">
+              <canvas id="selfPieChart" width="200" height="200"></canvas>
+              <div class="pie-center">
+                <div class="pie-center-pct" id="pieSelfPct">50%</div>
+                <div class="pie-center-label">on self</div>
+              </div>
+            </div>
+            <div class="pie-legend">
+              <div class="pie-legend-item"><div class="pie-legend-dot" style="background:var(--rose-light)"></div><div class="pie-legend-name">Self-care</div><div class="pie-legend-pct" id="legendSelf">50%</div></div>
+              <div class="pie-legend-item"><div class="pie-legend-dot" style="background:#3A3A3C"></div><div class="pie-legend-name">Focus on other</div><div class="pie-legend-pct" id="legendOther">50%</div></div>
+            </div>
+          </div>
+          <div class="pie-insight" id="pieInsight">Move the sliders above to see where your energy was this week.</div>
+        </div>
+      </div>
+
+      <div class="sec fade-up">
+        <div class="sec-header"><div class="sec-letter">C</div><div class="sec-label">Reflection</div></div>
+        <div class="card">
+          <div class="card-title">What does this tell you?</div>
+          <div class="fg"><div class="fl">Looking at that picture — what do you notice? And was the time alone this week rest, or distance?</div><div class="field-wrap"><textarea class="fi" id="scReflect" placeholder="Most of my energy stayed inward — and that felt genuinely good. Or — I can see that what I called self-care was mostly just avoiding connection. There's a difference and I felt it…" oninput="autoMark('selfcare')"></textarea><button class="voice-btn" onclick="toggleVoice(this,'scReflect')" title="Speak"><svg viewBox="0 0 24 24" fill="none" stroke="#C49080" stroke-width="1.5"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0014 0M12 19v3M9 22h6" stroke-linecap="round"/></svg></button></div></div>
+          <div class="fg"><div class="fl">One self-care act for next week — that involves at least a moment of connection</div><div class="field-wrap"><textarea class="fi" id="scIntention" placeholder="Something that nourishes you AND involves another person — even briefly. A walk with someone. A real conversation. Something that blurs the line between self-care and connection…" oninput="autoMark('selfcare')"></textarea><button class="voice-btn" onclick="toggleVoice(this,'scIntention')" title="Speak"><svg viewBox="0 0 24 24" fill="none" stroke="#C49080" stroke-width="1.5"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0014 0M12 19v3M9 22h6" stroke-linecap="round"/></svg></button></div></div>
+        </div>
+      </div>
+
+      <div class="sec fade-up">
+        <div class="sec-header"><div class="sec-letter">D</div><div class="sec-label">Save your record</div></div>
+        <div class="card">
+          <div class="card-title">Keep this week</div>
+          <div class="card-hint">Save your full responses to your history here, and/or download a complete personal record with everything you wrote — to look back on whenever you need it.</div>
+          <div class="save-row">
+            <button class="btn-primary" onclick="saveWeek()">✦ Save to History</button>
+            <button class="btn-outline" onclick="downloadRecord()">↓ Download My Record</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="continue-wrap" style="justify-content:flex-start;"><button class="btn-ghost" onclick="goTo('win')">← Back</button></div>
+    </div>
+  </div>
+
+</main>
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="historyModal">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title" id="modalTitle">—</div>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+// ── STATE ──
+const pages = ['triggers','story','code','needs','win','selfcare'];
+const progressMap = {triggers:16,story:33,code:50,needs:66,win:83,selfcare:100};
+let selectedMoods = [];
+let selectedTriggered = '';
+let selectedRecognition = '';
+let selectedTone = 'quietly-proud';
+const SC_KEYS = ['sleep','hydration','nourishment','movement','nature','alone','joy'];
+const STORAGE_KEY = 'tac_da_v1_history';
+
+const activationDescs = {
+  0:'Fully independent — a quiet and self-contained week',1:'Mostly settled — barely a ripple',
+  2:'Comfortable distance maintained throughout',3:'Something stirred — a moment of discomfort around closeness',
+  4:'Noticeable — someone needed something and it landed awkwardly',5:'Moderate — the pull toward distance was present',
+  6:'Significant — connection felt particularly uncomfortable this week',7:'Strong — the urge to withdraw ran for a while',
+  8:'Very activated — distance felt like the only safe option',9:'Overwhelming — the walls were firmly up',
+  10:'Complete withdrawal — the hardest kind of week'
+};
+
+const toneLines = {
+  'quietly-proud':'I noticed the pattern. I stayed with it. That\'s enough for this week.',
+  'still-processing':'Still figuring this one out. But I\'m here, and I\'m looking at it.',
+  'honest-hopeful':'It was hard. And I can see something shifting — slowly, and for real.',
+  'breakthrough':'Something genuinely moved this week. I\'m not the same as I was.',
+  'showing-up':'No dramatic wins. Just showing up. Again. That\'s the work.'
+};
+
+const pieInsights = [
+  'Almost all of your energy stayed inward this week. Notice honestly — did that feel like rest or like hiding? There is a difference worth knowing.',
+  'Very little went outward. The DA default is inward. Was this week version a genuine choice, or just the familiar pattern running?',
+  'More energy inward than outward. Notice whether the solitude felt nourishing or just comfortable in the familiar way.',
+  'About half and half. That balance — between self and others — is worth paying attention to. How did each half feel?',
+  'More energy went toward connection this week than staying inward. Notice how that felt — uncomfortable, or surprisingly okay?',
+  'Most of your energy went outward this week. For a DA that takes real intention. Notice whether it felt like too much, or like something you actually wanted.',
+  'Almost all of your focus went toward others this week. That is significant for a DA. Notice whether it felt like connection — or obligation.'
+];
+
+// ── INIT ──
+document.addEventListener('DOMContentLoaded',()=>{
+  document.getElementById('metaDate').value = new Date().toLocaleDateString('en-GB');
+  loadHistory();
+  updateWinsCard();
+  drawPie(50,50);
+  SC_KEYS.forEach(k=>updateSC(document.getElementById('sc-'+k),k));
+});
+
+// ── NAV ──
+function goTo(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('page-'+id).classList.add('active');
+  document.querySelectorAll('.nav-item[data-page]').forEach(n=>{
+    n.classList.remove('active');
+    if(n.dataset.page===id) n.classList.add('active');
+  });
+  document.getElementById('progressFill').style.width = progressMap[id]+'%';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// ── CHIPS ──
+function toggleChip(el,group){
+  el.classList.toggle('selected');
+  if(group==='mood'){
+    const v=el.dataset.val;
+    selectedMoods=el.classList.contains('selected')?[...selectedMoods,v]:selectedMoods.filter(x=>x!==v);
+  }
+}
+function selectSingle(el,group){
+  const row=el.closest('.chip-row');
+  row.querySelectorAll('.chip').forEach(c=>c.classList.remove('selected'));
+  el.classList.add('selected');
+  if(group==='triggered') selectedTriggered=el.dataset.val;
+  if(group==='recognition') selectedRecognition=el.dataset.val;
+  autoMark('triggers');
+}
+
+// ── ACTIVATION ──
+function updateActivation(v){
+  document.getElementById('activationVal').textContent=v+' / 10';
+  document.getElementById('activationDesc').textContent=activationDescs[parseInt(v)];
+}
+
+// ── CODE ──
+function toggleCode(el){el.classList.toggle('ticked');}
+
+// ── TONE + WINS CARD ──
+function selectTone(el){
+  document.querySelectorAll('.tone-chip').forEach(c=>c.classList.remove('selected'));
+  el.classList.add('selected');
+  selectedTone=el.dataset.tone;
+  updateWinsCard();
+}
+function updateWinsCard(){
+  const word=document.getElementById('oneWord').value.trim();
+  const week=document.getElementById('metaWeek').value||'—';
+  document.getElementById('cardWeek').textContent=week;
+  document.getElementById('cardWord').textContent=word||'Your word here';
+  document.getElementById('cardLine').textContent=toneLines[selectedTone];
+  const d=document.getElementById('oneWordDisplay');
+  d.innerHTML=word?`<span style="color:var(--rose-light)">${word}</span>`:`<span style="color:rgba(138,128,120,0.3);font-size:1.1rem;">your word will appear here</span>`;
+}
+function updateMeta(){
+  updateWinsCard();
+  document.getElementById('cardWeek').textContent=document.getElementById('metaWeek').value||'—';
+}
+
+// ── SELF CARE SLIDERS ──
+function updateSC(el,key){
+  const v=parseInt(el.value);
+  document.getElementById('scVal-'+key).textContent=v;
+  const pct=(v/10)*100;
+  el.style.background=`linear-gradient(90deg,var(--rose) ${pct}%,var(--border) ${pct}%)`;
+  el.style.setProperty('--thumb-color','var(--rose)');
+  updatePie();
+}
+
+// ── PIE ──
+function getSCAvg(){
+  const vals=SC_KEYS.map(k=>parseInt(document.getElementById('sc-'+k).value));
+  return Math.round(vals.reduce((a,b)=>a+b,0)/vals.length);
+}
+function updatePie(){
+  const avg=getSCAvg();
+  const selfPct=avg*10;
+  const otherPct=100-selfPct;
+  drawPie(selfPct,otherPct);
+  document.getElementById('pieSelfPct').textContent=selfPct+'%';
+  document.getElementById('legendSelf').textContent=selfPct+'%';
+  document.getElementById('legendOther').textContent=otherPct+'%';
+  const idx=Math.min(6,Math.floor(selfPct/15));
+  document.getElementById('pieInsight').innerHTML=`<span>${pieInsights[idx]}</span>`;
+}
+function drawPie(selfPct,otherPct){
+  const canvas=document.getElementById('selfPieChart');
+  if(!canvas) return;
+  const ctx=canvas.getContext('2d');
+  const cx=100,cy=100,r=80,inner=52;
+  ctx.clearRect(0,0,200,200);
+  const segments=[
+    {pct:selfPct,color:'#D4A898'},
+    {pct:otherPct,color:'#3A3A3C'}
+  ];
+  let start=-Math.PI/2;
+  segments.forEach(s=>{
+    const angle=(s.pct/100)*Math.PI*2;
+    ctx.beginPath();
+    ctx.moveTo(cx,cy);
+    ctx.arc(cx,cy,r,start,start+angle);
+    ctx.closePath();
+    ctx.fillStyle=s.color;
+    ctx.fill();
+    start+=angle;
+  });
+  ctx.beginPath();
+  ctx.arc(cx,cy,inner,0,Math.PI*2);
+  ctx.fillStyle='#1E1E20';
+  ctx.fill();
+}
+
+// ── AUTO MARK ──
+function autoMark(page){
+  document.querySelector(`.nav-item[data-page="${page}"]`)?.classList.add('done');
+}
+
+// ── COLLECT ──
+function collectData(){
+  const codeChecks=[];
+  document.querySelectorAll('.code-check.ticked .code-check-label').forEach(el=>codeChecks.push(el.textContent));
+  const scVals={};
+  SC_KEYS.forEach(k=>scVals[k]=document.getElementById('sc-'+k).value);
+  return {
+    week:document.getElementById('metaWeek').value,
+    date:document.getElementById('metaDate').value,
+    name:document.getElementById('metaName').value,
+    activation:document.getElementById('activationSlider').value,
+    activationDesc:document.getElementById('activationDesc').textContent,
+    moods:selectedMoods,
+    triggered:selectedTriggered,
+    triggerWhat:document.getElementById('triggerWhat').value,
+    triggerBody:document.getElementById('triggerBody').value,
+    triggerDuration:document.getElementById('triggerDuration').value,
+    recognition:selectedRecognition,
+    recognitionNote:document.getElementById('recognitionNote').value,
+    storyMain:document.getElementById('storyMain').value,
+    storySelf:document.getElementById('storySelf').value,
+    storyThem:document.getElementById('storyThem').value,
+    storyEvidFor:document.getElementById('storyEvidFor').value,
+    storyEvidAgainst:document.getElementById('storyEvidAgainst').value,
+    storyPattern:document.getElementById('storyPattern').value,
+    storyBelief:document.getElementById('storyBelief').value,
+    codeChecks,
+    codeWinWhat:document.getElementById('codeWinWhat').value,
+    codeWinDiff:document.getElementById('codeWinDiff').value,
+    codeWinFeel:document.getElementById('codeWinFeel').value,
+    needsUnmet:document.getElementById('needsUnmet').value,
+    needsAsked:document.getElementById('needsAsked').value,
+    needsLeave:document.getElementById('needsLeave').value,
+    needsStep:document.getElementById('needsStep').value,
+    needsSelf:document.getElementById('needsSelf').value,
+    oneWord:document.getElementById('oneWord').value,
+    tone:selectedTone,
+    sc:scVals,
+    scAvg:getSCAvg(),
+    scReflect:document.getElementById('scReflect').value,
+    scIntention:document.getElementById('scIntention').value,
+    savedAt:new Date().toISOString()
+  };
+}
+
+// ── STORAGE ──
+function getHistory(){try{const r=localStorage.getItem(STORAGE_KEY);return r?JSON.parse(r):[]}catch(e){return [];}}
+function saveStorage(entries){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(entries));}catch(e){}}
+
+function saveWeek(){
+  const data=collectData();
+  const entries=getHistory();
+  const idx=entries.findIndex(e=>e.week===data.week&&e.date===data.date);
+  if(idx>=0) entries[idx]=data; else entries.unshift(data);
+  saveStorage(entries);
+  loadHistory();
+  showToast('✦ Week saved to your history');
+}
+
+function loadHistory(){
+  const entries=getHistory();
+  const list=document.getElementById('historyList');
+  if(!entries.length){list.innerHTML='<div class="history-empty">Your check-in history will appear here once you save your first week.</div>';return;}
+  list.innerHTML=entries.map((e,i)=>`
+    <div class="history-entry" onclick="openModal(${i})">
+      <div class="history-week">${e.week||'—'}</div>
+      <div class="history-date">${e.date||''}</div>
+      ${e.oneWord?`<div class="history-word">${e.oneWord}</div>`:''}
+    </div>
+  `).join('');
+}
+
+// ── MODAL ──
+function openModal(idx){
+  const e=getHistory()[idx];
+  if(!e) return;
+  document.getElementById('modalTitle').textContent=(e.week||'—')+(e.date?' · '+e.date:'');
+  const sections=[
+    {title:'01 — How Was Your Week?',fields:[
+      {label:'How the week felt',value:e.moods?.join(', ')},
+      {label:'Activation level',value:e.activation+'/10 — '+e.activationDesc},
+      {label:'Was there a trigger?',value:e.triggered},
+      {label:'What happened',value:e.triggerWhat},
+      {label:'How it showed up in the body',value:e.triggerBody},
+      {label:'How long it lasted',value:e.triggerDuration},
+      {label:'When I recognised it',value:e.recognition},
+      {label:'What helped me see it',value:e.recognitionNote},
+    ]},
+    {title:'02 — The Story I Told',fields:[
+      {label:'The story my mind told me',value:e.storyMain},
+      {label:'What it said about me',value:e.storySelf},
+      {label:'What it said about them',value:e.storyThem},
+      {label:'Evidence that supported it',value:e.storyEvidFor},
+      {label:'Evidence that contradicted it',value:e.storyEvidAgainst},
+      {label:'What was pattern, not present',value:e.storyPattern},
+      {label:'A belief I\'m loosening',value:e.storyBelief},
+    ]},
+    {title:'03 — A Moment of Connection',fields:[
+      {label:'CODE Method — what I ticked',value:e.codeChecks?.join(' · ')},
+      {label:'The moment I chose differently',value:e.codeWinWhat},
+      {label:'What made it different',value:e.codeWinDiff},
+      {label:'How it felt',value:e.codeWinFeel},
+    ]},
+    {title:'04 — What I Need',fields:[
+      {label:'What I needed and didn\'t get',value:e.needsUnmet},
+      {label:'Whether I asked',value:e.needsAsked},
+      {label:'What I\'m leaving behind',value:e.needsLeave},
+      {label:'What I\'m stepping into',value:e.needsStep},
+      {label:'Something I said to myself',value:e.needsSelf},
+    ]},
+    {title:'05 — This Week\'s Win',fields:[
+      {label:'My word for the week',value:e.oneWord},
+    ]},
+    {title:'06 — How I Showed Up For Me',fields:[
+      {label:'Self-care average',value:e.scAvg!==undefined?e.scAvg+'/10':undefined},
+      {label:'Sleep',value:e.sc?.sleep+'/10'},
+      {label:'Hydration',value:e.sc?.hydration+'/10'},
+      {label:'Nourishment',value:e.sc?.nourishment+'/10'},
+      {label:'Movement',value:e.sc?.movement+'/10'},
+      {label:'Time in nature',value:e.sc?.nature+'/10'},
+      {label:'Time alone',value:e.sc?.alone+'/10'},
+      {label:'Something just for joy',value:e.sc?.joy+'/10'},
+      {label:'What I noticed',value:e.scReflect},
+      {label:'Self-care intention for next week',value:e.scIntention},
+    ]},
+  ];
+  document.getElementById('modalBody').innerHTML=sections.map(s=>`
+    <div class="modal-section">
+      <div class="modal-section-title">${s.title}</div>
+      ${s.fields.map(f=>`
+        <div class="modal-field">
+          <div class="modal-field-label">${f.label}</div>
+          <div class="modal-field-value ${!f.value?'empty':''}">${f.value||'Not recorded'}</div>
+        </div>
+      `).join('')}
+    </div>
+  `).join('');
+  document.getElementById('historyModal').classList.add('open');
+}
+function closeModal(){document.getElementById('historyModal').classList.remove('open');}
+document.getElementById('historyModal').addEventListener('click',function(e){if(e.target===this)closeModal();});
+
+// ── DOWNLOAD ──
+function downloadRecord(){
+  const d=collectData();
+  const now=new Date();
+  const ts=now.toLocaleDateString('en-GB').replace(/\//g,'-')+'_'+now.toTimeString().slice(0,5).replace(':','-');
+  const sc=d.sc||{};
+  const lines=[
+    '═══════════════════════════════════════════════',
+    '  THE RELATIONSHIP REVOLUTION — Weekly Check-In Record',
+    '  Anxious Attacher',
+    '═══════════════════════════════════════════════',
+    '',`Week: ${d.week||'—'}`,`Date: ${d.date||'—'}`,`Name: ${d.name||'—'}`,`Saved: ${new Date().toLocaleString('en-GB')}`,
+    '','───────────────────────────────────────────────',
+    '  01  HOW WAS YOUR WEEK?',
+    '───────────────────────────────────────────────',
+    '',`How the week felt: ${d.moods?.join(', ')||'—'}`,
+    `Activation level: ${d.activation}/10 — ${d.activationDesc}`,
+    `Was there a trigger? ${d.triggered||'—'}`,
+    '','What happened:',d.triggerWhat||'—',
+    '','How it showed up in the body:',d.triggerBody||'—',
+    '',`How long it lasted: ${d.triggerDuration||'—'}`,
+    `When I recognised it: ${d.recognition||'—'}`,
+    '','What helped me see it:',d.recognitionNote||'—',
+    '','───────────────────────────────────────────────',
+    '  02  THE STORY I TOLD MYSELF',
+    '───────────────────────────────────────────────',
+    '','The story my mind told me:',d.storyMain||'—',
+    '','What it said about me:',d.storySelf||'—',
+    '','What it said about them:',d.storyThem||'—',
+    '','Evidence that supported it:',d.storyEvidFor||'—',
+    '','Evidence that contradicted it:',d.storyEvidAgainst||'—',
+    '','What was pattern, not present:',d.storyPattern||'—',
+    '','A belief I\'m loosening:',d.storyBelief||'—',
+    '','───────────────────────────────────────────────',
+    '  03  WHERE I SHOWED UP DIFFERENTLY',
+    '───────────────────────────────────────────────',
+    '','CODE Method — what I ticked:',
+    d.codeChecks?.length?d.codeChecks.map(c=>'  ✓ '+c).join('\n'):'—',
+    '','The moment I chose differently:',d.codeWinWhat||'—',
+    '','What made it different:',d.codeWinDiff||'—',
+    '','How it felt:',d.codeWinFeel||'—',
+    '','───────────────────────────────────────────────',
+    '  04  WHAT I NEED',
+    '───────────────────────────────────────────────',
+    '','What I needed and didn\'t get:',d.needsUnmet||'—',
+    '','Whether I asked — and what stopped me:',d.needsAsked||'—',
+    '','What I\'m leaving behind:',d.needsLeave||'—',
+    '','What I\'m stepping into next week:',d.needsStep||'—',
+    '','Something I said to myself:',d.needsSelf||'—',
+    '','───────────────────────────────────────────────',
+    '  05  THIS WEEK\'S WIN',
+    '───────────────────────────────────────────────',
+    '',`My word for the week: ${d.oneWord||'—'}`,
+    '','───────────────────────────────────────────────',
+    '  06  HOW I SHOWED UP FOR ME',
+    '───────────────────────────────────────────────',
+    '',`Self-care average: ${d.scAvg}/10`,
+    `  🌙 Sleep: ${sc.sleep||'—'}/10`,
+    `  💧 Hydration: ${sc.hydration||'—'}/10`,
+    `  🍽 Nourishment: ${sc.nourishment||'—'}/10`,
+    `  🚶 Movement: ${sc.movement||'—'}/10`,
+    `  🌿 Time in nature: ${sc.nature||'—'}/10`,
+    `  🤍 Time alone: ${sc.alone||'—'}/10`,
+    `  ✨ Something just for joy: ${sc.joy||'—'}/10`,
+    '','What I noticed:',d.scReflect||'—',
+    '','Self-care intention for next week:',d.scIntention||'—',
+    '','═══════════════════════════════════════════════',
+    '  the-relationship-revolution.com',
+    '═══════════════════════════════════════════════',
+  ];
+  const blob=new Blob([lines.join('\n')],{type:'text/plain'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download=`TRR-DA-CheckIn_${ts}.txt`;
+  a.click();
+  showToast('↓ Record downloaded');
+}
+
+// ── VOICE INPUT ──
+let activeRecognition = null;
+let activeBtn = null;
+
+function toggleVoice(btn, targetId) {
+  const target = document.getElementById(targetId);
+  if (!target) return;
+
+  if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
+    showToast('Voice input not supported in this browser');
+    return;
+  }
+
+  // If already listening on this button, stop
+  if (btn.classList.contains('listening')) {
+    if (activeRecognition) activeRecognition.stop();
+    return;
+  }
+
+  // Stop any other active recognition
+  if (activeRecognition) {
+    activeRecognition.stop();
+  }
+  if (activeBtn) {
+    activeBtn.classList.remove('listening');
+    activeBtn.innerHTML = micIcon();
+  }
+
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  const recognition = new SR();
+  recognition.continuous = true;
+  recognition.interimResults = true;
+  recognition.lang = 'en-GB';
+
+  let existingText = target.value;
+  if (existingText && !existingText.endsWith(' ')) existingText += ' ';
+
+  recognition.onstart = () => {
+    btn.classList.add('listening');
+    btn.innerHTML = stopIcon();
+    activeRecognition = recognition;
+    activeBtn = btn;
+  };
+
+  recognition.onresult = (e) => {
+    let interim = '';
+    let final = '';
+    for (let i = e.resultIndex; i < e.results.length; i++) {
+      if (e.results[i].isFinal) final += e.results[i][0].transcript + ' ';
+      else interim += e.results[i][0].transcript;
+    }
+    target.value = existingText + final + interim;
+    if (final) existingText = target.value;
+    target.dispatchEvent(new Event('input'));
+  };
+
+  recognition.onerror = (e) => {
+    if (e.error !== 'aborted') showToast('Voice input error — please try again');
+    stopVoice(btn);
+  };
+
+  recognition.onend = () => stopVoice(btn);
+
+  recognition.start();
+}
+
+function stopVoice(btn) {
+  if (btn) {
+    btn.classList.remove('listening');
+    btn.innerHTML = micIcon();
+  }
+  activeRecognition = null;
+  activeBtn = null;
+}
+
+function micIcon() {
+  return `<svg viewBox="0 0 24 24" fill="none" stroke="#C49080" stroke-width="1.5"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0014 0M12 19v3M9 22h6" stroke-linecap="round"/></svg>`;
+}
+function stopIcon() {
+  return `<svg viewBox="0 0 24 24" fill="none" stroke="#D4A898" stroke-width="1.5"><rect x="6" y="6" width="12" height="12" rx="2" fill="rgba(196,144,128,0.3)"/></svg>`;
+}
+
+// ── TOAST ──
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2800);
+}
+</script>
+
+</div>
+</body>
+</html>
